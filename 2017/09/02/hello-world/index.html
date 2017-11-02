@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        djangoHeroku · wororo
+        Hello World · wororo
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -63,7 +63,7 @@
                 <a href="/" >wororo.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">djangoHeroku</a>
+                <a href="#" class="post-name">Hello World</a>
             </div>
     </div>
     
@@ -84,7 +84,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            djangoHeroku
+            Hello World
             <!-- 404 -->
             
         </h1>
@@ -100,9 +100,17 @@
         
             <!-- 文章页标签  -->
             
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = Hexo>Hexo</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = HelloWorld>HelloWorld</a>
+    
+</div>
+            
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2017/09/21</span>
+                <span class="post-intro-time">2017/09/02</span>
             </div>
         
     </div>
@@ -173,38 +181,27 @@
         <div class="container container-unloaded">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="Base-Django-Heroku"><a href="#Base-Django-Heroku" class="headerlink" title="Base Django-Heroku"></a>Base Django-Heroku</h1><p>Git should be installed</p>
-<h1 id="Virtual-Environment"><a href="#Virtual-Environment" class="headerlink" title="Virtual Environment"></a>Virtual Environment</h1><h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo pip install virtualenv</div><div class="line">sudo pip install virtualenvwrapper</div></pre></td></tr></table></figure>
-<h2 id="Create-a-Virtual-Environment"><a href="#Create-a-Virtual-Environment" class="headerlink" title="Create a Virtual Environment"></a>Create a Virtual Environment</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ mkvirtualenv djangoApp</div><div class="line">$ workon Scripts/activate</div><div class="line">$ mkdir djangoApp</div></pre></td></tr></table></figure>
-<h1 id="Django"><a href="#Django" class="headerlink" title="Django"></a>Django</h1><h2 id="Requirements-1"><a href="#Requirements-1" class="headerlink" title="Requirements"></a>Requirements</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ pip install Django</div><div class="line">$ pip install python_dotenv</div><div class="line">``` </div><div class="line"></div><div class="line">## Create Project</div><div class="line"></div><div class="line">``` bash</div><div class="line">$ cd djangoApp</div><div class="line">$ django-admin.py startproject --template=https://github.com/heroku/heroku-django-template/archive/master.zip --name=Procfile myHerokuProject</div><div class="line">$ cd myHerokuProject</div><div class="line">$ pip install -r requirements.txt</div><div class="line">$ echo &quot;db.sqlite3&quot; &gt;&gt; .gitignore</div></pre></td></tr></table></figure>
-<h2 id="Remove-Secret-Key-Using-python-dotenv"><a href="#Remove-Secret-Key-Using-python-dotenv" class="headerlink" title="Remove Secret Key (Using python_dotenv)"></a>Remove Secret Key (Using <a href="https://github.com/theskumar/python-dotenv" target="_blank" rel="external">python_dotenv</a>)</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="string">"python_dotenv"</span> &gt;&gt; requirements.txt</div><div class="line">$ <span class="built_in">cd</span> myHerokuProject</div><div class="line">$ touch .env</div></pre></td></tr></table></figure>
-<p>Move <code>SECRET_KEY=key</code> to the <code>.env</code> file (should be in the same folder as settings.py)</p>
-<p>Add the following lines to your settings.py:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">...</div><div class="line"><span class="keyword">from</span> dotenv <span class="keyword">import</span> load_dotenv, find_dotenv</div><div class="line">...</div><div class="line">load_dotenv(find_dotenv())</div><div class="line">SECRET_KEY = os.environ.get(<span class="string">'SECRET_KEY'</span>)</div><div class="line">...</div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ..</div></pre></td></tr></table></figure>
-<h1 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h1><h2 id="Create-Github-Repo-myHerokuProjectGit"><a href="#Create-Github-Repo-myHerokuProjectGit" class="headerlink" title="Create Github Repo myHerokuProjectGit"></a>Create Github Repo <em>myHerokuProjectGit</em></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git init</div><div class="line">$ git remote add origin https://github.com/githubUsername/*myHerokuProjectGit*.git</div><div class="line">$ git add -A</div><div class="line">$ git commit -m <span class="string">"django template initial commit"</span></div><div class="line">$ git push -u origin master</div></pre></td></tr></table></figure>
-<h1 id="Heroku"><a href="#Heroku" class="headerlink" title="Heroku"></a>Heroku</h1><h2 id="Requirements-2"><a href="#Requirements-2" class="headerlink" title="Requirements"></a>Requirements</h2><pre><code class="sh">$ wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
-</code></pre>
-<h2 id="Create-Heroku-App"><a href="#Create-Heroku-App" class="headerlink" title="Create Heroku App"></a>Create Heroku App</h2><pre><code>$ heroku login
-$ heroku create example-project-name
-$ heroku config:set DISABLE_COLLECTSTATIC=1
-</code></pre><p><strong>Heroku Web:</strong> Settings Tab -&gt; Reveal Config Vars -&gt; Add: SECRET_KEY : secret key value</p>
-<p><strong>Heroku Web:</strong> Deploy Tab -&gt; Connect to Github -&gt; Connect -&gt; Enable Automatic Deploys</p>
-<pre><code>$ git push heroku master
-</code></pre><h2 id="Django-in-Heroku"><a href="#Django-in-Heroku" class="headerlink" title="Django in Heroku"></a>Django in Heroku</h2><h3 id="Migrate"><a href="#Migrate" class="headerlink" title="Migrate"></a>Migrate</h3><pre><code>$ heroku run python manage.py migrate
-</code></pre><h3 id="Create-Admin"><a href="#Create-Admin" class="headerlink" title="Create Admin"></a>Create Admin</h3><pre><code>$ heroku run python manage.py createsuperuser
-</code></pre>
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
     </article>
     <!-- 前后页  -->
     <ul class="post-pager">
         
-        
-            <li class="previous">
-                <a href= "/2017/09/14/freshStart/" title= freshStart >
-                    <span>Previous Post</span>
-                    <span>freshStart</span>
+            <li class="next">
+                <a href= "/2017/09/02/firstBorn/" title= firstBorn >
+                    <span>Next Post</span>
+                    <span>firstBorn</span>
                 </a>
             </li>
+        
         
     </ul>
     <!-- 评论插件 -->
@@ -264,7 +261,7 @@ $ heroku config:set DISABLE_COLLECTSTATIC=1
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Base-Django-Heroku"><span class="toc-number">1.</span> <span class="toc-text">Base Django-Heroku</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Virtual-Environment"><span class="toc-number">2.</span> <span class="toc-text">Virtual Environment</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements"><span class="toc-number">2.1.</span> <span class="toc-text">Requirements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-a-Virtual-Environment"><span class="toc-number">2.2.</span> <span class="toc-text">Create a Virtual Environment</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Django"><span class="toc-number">3.</span> <span class="toc-text">Django</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements-1"><span class="toc-number">3.1.</span> <span class="toc-text">Requirements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Remove-Secret-Key-Using-python-dotenv"><span class="toc-number">3.2.</span> <span class="toc-text">Remove Secret Key (Using python_dotenv)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Github"><span class="toc-number">4.</span> <span class="toc-text">Github</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Github-Repo-myHerokuProjectGit"><span class="toc-number">4.1.</span> <span class="toc-text">Create Github Repo myHerokuProjectGit</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Heroku"><span class="toc-number">5.</span> <span class="toc-text">Heroku</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements-2"><span class="toc-number">5.1.</span> <span class="toc-text">Requirements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Heroku-App"><span class="toc-number">5.2.</span> <span class="toc-text">Create Heroku App</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-in-Heroku"><span class="toc-number">5.3.</span> <span class="toc-text">Django in Heroku</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Migrate"><span class="toc-number">5.3.1.</span> <span class="toc-text">Migrate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-Admin"><span class="toc-number">5.3.2.</span> <span class="toc-text">Create Admin</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
     </div>
     
     <div class="back-top">&#xe639;</div>
@@ -335,27 +332,27 @@ $ heroku config:set DISABLE_COLLECTSTATIC=1
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/21</span><a class="archive-post-title" href= "/2017/09/21/djangoHeroku/" >djangoHeroku</a>
+            <span class="archive-post-date">09/23</span><a class="archive-post-title" href= "/2017/09/23/djangoHeroku/" >djangoHeroku</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/14</span><a class="archive-post-title" href= "/2017/09/14/freshStart/" >freshStart</a>
+            <span class="archive-post-date">09/16</span><a class="archive-post-title" href= "/2017/09/16/freshStart/" >freshStart</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/11</span><a class="archive-post-title" href= "/2017/09/11/hexoBlog/" >hexoBlog</a>
+            <span class="archive-post-date">09/09</span><a class="archive-post-title" href= "/2017/09/09/hexoBlog/" >hexoBlog</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2017/09/05/firstBorn/" >firstBorn</a>
+            <span class="archive-post-date">09/02</span><a class="archive-post-title" href= "/2017/09/02/firstBorn/" >firstBorn</a>
         </li>
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2017/09/05/hello-world/" >Hello World</a>
+            <span class="archive-post-date">09/02</span><a class="archive-post-title" href= "/2017/09/02/hello-world/" >Hello World</a>
         </li>
     
     </div>
