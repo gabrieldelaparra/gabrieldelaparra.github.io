@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>
+        
+        esteganografia · wororo
+        
+    </title>
+    <link rel="icon" href= /assests/favicon.ico>
+    <!-- TODO: 在font-face加载完毕后改变字体  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
+    <!-- 提前加载place holder  -->
+    <style type="text/css">
+        @font-face {
+            font-family: 'Oswald-Regular';
+            src: url('/font/Oswald-Regular.ttf');
+        }
+    </style>
+    <style type="text/css">
+        .site-intro-placeholder {
+            position: absolute;
+            z-index: -2;
+            top: 0;
+            left: 0px;
+            width: calc(100% + 300px);
+            height: 100%;
+            background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+            background-position: center center;
+            transform: translate3d(-226px, 0, 0);
+            animation: gradient-move 2.5s ease-out 0s 1;
+        }
+        @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+    <link rel="stylesheet" href = /css/style.css?v=20171020 />
+    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+    
+    <script src="/scripts/main.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >wororo.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">esteganografia</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>wororo.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-img" style="background-image: url(/intro/back1.jpg)"></div>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            esteganografia
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2017/09/30</span>
+            </div>
+        
+    </div>
+</div>
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <script>
+            var browser = {
+                    versions: function () {
+                        var u = window.navigator.userAgent;
+                        return {
+                            userAgent: u,
+                            trident: u.indexOf('Trident') > -1, //IE内核
+                            presto: u.indexOf('Presto') > -1, //opera内核
+                            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                            iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+                            iPad: u.indexOf('iPad') > -1, //是否为iPad
+                            webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+                            weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+                            uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+                        };
+                    }()
+                }
+
+            function fontLoaded(){
+                console.log('font loaded');
+                if (document.getElementsByClassName('site-intro-meta')) {
+                    document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+                    document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+                    var postIntroTags = document.getElementsByClassName('post-intro-tags')[0],
+                        postIntroMeat = document.getElementsByClassName('post-intro-meta')[0];
+                        if (postIntroTags) {
+                            postIntroTags.classList.add('post-fade-in');
+                        }
+                        if (postIntroMeat) {
+                            postIntroMeat.classList.add('post-fade-in');
+                        }
+                    }
+                }
+                
+            console.log("userAgent:" + browser.versions.userAgent);
+            // UC不支持跨域，所以直接显示
+            if (browser.versions.uc) {
+                console.log("UCBrowser");
+                fontLoaded();
+            } else {
+                WebFont.load({
+                    custom: {
+                        families: ['Oswald-Regular']
+                    },
+                    loading: function () {  //所有字体开始加载
+                        // console.log('loading');
+                    },
+                    active: function () {  //所有字体已渲染
+                        fontLoaded();
+                    },
+                    inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+                        console.log('inactive: timeout');
+                        fontLoaded();
+                    },
+                    timeout: 7000 // Set the timeout to two seconds
+                });
+            }
+        </script>
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="Esteganografia"><a href="#Esteganografia" class="headerlink" title="Esteganografía"></a>Esteganografía</h1><p>Este proyecto consiste en esconder texto dentro de una imagen de tal forma que tanto el texto como la imagen no se vean (afectada en el caso de la imagen) a simple vista. Dicha técnica se conoce como Esteganografía.</p>
+<p>Se trabajará con Python para generar un mensaje codificado, de tal forma que contenta el número de bits significativos de la imagen sobre los que se esconde el texto, el texto como tal y un mensaje de fin. Dicho mensaje de término se agregó para indicarle al código que la lectura debería llegar hasta dicho punto.</p>
+<h1 id="Introduccion"><a href="#Introduccion" class="headerlink" title="Introducción"></a>Introducción</h1><p>La Esteganografía existe desde hace siglos. Según Wikipedia se aplicó en las primeras veces por Heródoto en el libro de las Historias:</p>
+<p><em>“En este libro describe cómo un personaje tomó un cuadernillo de dos hojas o tablillas; rayó bien la cera que las cubría y en la madera misma grabó el mensaje y lo volvió a cubrir con cera regular.</em></p>
+<p><em>Otra historia, en el mismo libro, relata cómo otro personaje había rasurado a navaja la cabeza de su esclavo de mayor confianza, le tatuó el mensaje en el cuero cabelludo, esperó después a que le volviera a crecer el cabello y lo mandó al receptor del mensaje, con instrucciones de que le rasuraran la cabeza.”</em></p>
+<h1 id="Imports"><a href="#Imports" class="headerlink" title="Imports"></a>Imports</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> skimage <span class="keyword">import</span> io</div></pre></td></tr></table></figure>
+<h1 id="Imagen-original"><a href="#Imagen-original" class="headerlink" title="Imagen original"></a>Imagen original</h1><p>Para abrir la imagen y mostrarla, ocuparemos <code>scikit-image.io.imread()</code> </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">imageFilename = <span class="string">r"imagen.png"</span></div><div class="line">image = io.imread(imageFilename)</div><div class="line">io.imshow(image)</div><div class="line">io.show()</div></pre></td></tr></table></figure>
+<p><img src="esteganografia/output_4_0.png" alt="png"></p>
+<h1 id="Texto-original"><a href="#Texto-original" class="headerlink" title="Texto original"></a>Texto original</h1><p>El texto se carga por <code>open</code>, con permisos unicamente de lectura.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">textFilename = <span class="string">r"texto.txt"</span></div><div class="line">text = open(textFilename,<span class="string">'r'</span>).read()</div><div class="line">print(text)</div></pre></td></tr></table></figure>
+<pre><code>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus auctor maximus dignissim. Etiam luctus elit nec risus varius volutpat. Vivamus arcu ante, tempus nec luctus commodo, blandit vel neque. Pellentesque semper posuere purus, et finibus leo accumsan non. Sed sed felis vel erat pretium molestie. Nulla facilisi. Proin vel lacus et leo tristique luctus eu nec nulla. Nullam finibus lobortis porta. Vestibulum sit amet lacus eros. Aliquam tempus augue quis lacus gravida aliquet.
+
+Maecenas eget purus est. Etiam ac lectus ac magna commodo molestie in eget ante. Vestibulum porta mauris nec risus finibus, nec elementum purus vulputate. Nunc non eros lobortis, vestibulum nibh eget, sagittis justo. Suspendisse eget tellus vitae dolor fermentum elementum. Nulla luctus nulla vel volutpat dictum. Morbi ac nulla interdum, semper lacus quis, eleifend eros.
+
+Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse potenti. Suspendisse potenti. Cras eget massa urna. Pellentesque quam neque, euismod sagittis eros sed, consequat fringilla augue. In ac euismod diam. Morbi maximus semper erat, pulvinar efficitur ligula congue eu. Donec ante arcu, feugiat sit amet tincidunt in, interdum id nibh. In non posuere nisl. Vivamus vitae justo in tellus tincidunt facilisis in ut dui. Vestibulum sed mauris aliquet, blandit lacus sit amet, ultrices nisl. Aliquam eget pharetra mi, eget venenatis enim. Vivamus a placerat enim.
+
+Donec varius aliquet velit, id mollis massa ultrices sit amet. Mauris lacus nunc, euismod non dignissim at, consectetur vitae enim. Phasellus volutpat leo urna, a posuere felis volutpat quis. Ut elementum urna sed arcu fermentum ultricies. Mauris at massa diam. Vestibulum id ipsum rutrum, ultrices metus id, pharetra tortor. Vestibulum lacinia odio nec faucibus lobortis. Curabitur convallis, velit quis feugiat scelerisque, eros elit lobortis tellus, non tempor lectus dolor non risus. Suspendisse a condimentum mauris. Cras finibus nec lacus at consequat. Donec et neque et nibh placerat efficitur vel non magna. Mauris augue nunc, placerat quis tellus eu, viverra fermentum quam. Mauris at metus pretium, rhoncus nisi vitae, scelerisque elit.
+
+In massa erat, dignissim quis enim in, egestas aliquam dolor. Morbi condimentum blandit placerat. Cras ultricies, nisi in tincidunt facilisis, lacus nibh iaculis mi, vitae cursus quam sem sit amet urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed nisi lectus, placerat at scelerisque sollicitudin, cursus eget erat. Cras eu volutpat nisl, sit amet tincidunt nisl. Proin a elit elit. Sed et lectus fermentum, congue est vel, mattis mi.
+</code></pre><h1 id="Codificacion"><a href="#Codificacion" class="headerlink" title="Codificación"></a>Codificación</h1><p>El proceso de codificación y decodificación se realizarán por medio de operaciones a nivel de bits. El procedimiento se podría resumir de la siguiente manera:</p>
+<pre><code>- Calcular la máscara
+- Generar una lista de bits que contienen el texto codificado
+- Aplicar la codificacion a la imagen
+</code></pre><h2 id="Calculo-de-la-mascara"><a href="#Calculo-de-la-mascara" class="headerlink" title="Calculo de la máscara"></a>Calculo de la máscara</h2><p>Para calculár la máscara, se definirá una variable que indica el número de bits (<code>nbit</code>) a usar. Para el valor de la máscara, se calcula el valor máximo para un byte/pixel (0-255) y se le resta el $2^nbits$. De esta forma, por ejemplo, para un <code>nbit</code> de 3 se tiene una máscara de 0b 1111 1011.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getMask</span><span class="params">(nbits)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="number">255</span>-(<span class="number">2</span>**(int(nbits)<span class="number">-1</span>))</div></pre></td></tr></table></figure>
+<p>Así, las máscaras que ocuparemos para los distintos bytes serán:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">9</span>):</div><div class="line">    print(bin(getMask(i)))</div></pre></td></tr></table></figure>
+<pre><code>0b11111110
+0b11111101
+0b11111011
+0b11110111
+0b11101111
+0b11011111
+0b10111111
+0b1111111
+</code></pre><h2 id="Codificacion-del-texto-a-bits"><a href="#Codificacion-del-texto-a-bits" class="headerlink" title="Codificación del texto a bits"></a>Codificación del texto a bits</h2><p>La generación de una lista con el texto codificado está compuesta de 3 partes: </p>
+<ul>
+<li>Agregar 4 bits que indican la cantidad de bits significativos con los que se encriptó la imagen.</li>
+<li>Convertir los caracteres (bytes) a bits.</li>
+<li>Agregar una marca para indicar el final del archivo.</li>
+</ul>
+<p>Para agregar el número de bits significativos con los que se encriptó la imagen se desplaza hacia la derecha 1 uno la cantidad de veces que se especifica con nBits. El proceso se realiza con los operadores “&gt;&gt;” y $”\&amp;”$. El código se aprecia a continuación:</p>
+<h3 id="Conversion-a-bits"><a href="#Conversion-a-bits" class="headerlink" title="Conversión a bits"></a>Conversión a bits</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getEncodedNbits</span><span class="params">(nbits)</span>:</span></div><div class="line">    encodedNbits = []</div><div class="line">    </div><div class="line">    tmp = int(nbits)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">4</span>):</div><div class="line">        encodedNbits.append(tmp &amp; <span class="number">1</span>)</div><div class="line">        tmp = tmp &gt;&gt; <span class="number">1</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> encodedNbits</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">32</span>):</div><div class="line">    print(i,<span class="string">"\t"</span>, getEncodedNbits(i))</div></pre></td></tr></table></figure>
+<pre><code>0      [0, 0, 0, 0]
+1      [1, 0, 0, 0]
+2      [0, 1, 0, 0]
+3      [1, 1, 0, 0]
+4      [0, 0, 1, 0]
+5      [1, 0, 1, 0]
+6      [0, 1, 1, 0]
+7      [1, 1, 1, 0]
+8      [0, 0, 0, 1]
+9      [1, 0, 0, 1]
+10      [0, 1, 0, 1]
+11      [1, 1, 0, 1]
+12      [0, 0, 1, 1]
+13      [1, 0, 1, 1]
+14      [0, 1, 1, 1]
+15      [1, 1, 1, 1]
+16      [0, 0, 0, 0]
+17      [1, 0, 0, 0]
+18      [0, 1, 0, 0]
+19      [1, 1, 0, 0]
+20      [0, 0, 1, 0]
+21      [1, 0, 1, 0]
+22      [0, 1, 1, 0]
+23      [1, 1, 1, 0]
+24      [0, 0, 0, 1]
+25      [1, 0, 0, 1]
+26      [0, 1, 0, 1]
+27      [1, 1, 0, 1]
+28      [0, 0, 1, 1]
+29      [1, 0, 1, 1]
+30      [0, 1, 1, 1]
+31      [1, 1, 1, 1]
+</code></pre><h3 id="Letras-a-bits"><a href="#Letras-a-bits" class="headerlink" title="Letras a bits"></a>Letras a bits</h3><p>Convertir los caracteres a bits se logra de la misma manera. En la medida que se desplazan ($&gt;&gt;$) y se aislan ($\&amp; 1$) se van agregando a la lista. </p>
+<p>El mismo proceso se ocupara para la marca del EOF. En ese caso se ocupó la siguiente variable.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">END_OF_FILE = <span class="string">"$EOF"</span></div></pre></td></tr></table></figure>
+<p>El código se puede apreciar a continuación.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getEncodedText</span><span class="params">(nbits, text)</span>:</span></div><div class="line">    encodedText = []</div><div class="line"></div><div class="line">    <span class="comment">#Convertir cada caracter a bits y agregarlos a una lista:</span></div><div class="line">    <span class="keyword">for</span> char <span class="keyword">in</span> text:</div><div class="line">        byte = []</div><div class="line">        tmp = ord(char)</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">8</span>):</div><div class="line">            byte.append(tmp &amp; <span class="number">1</span>)</div><div class="line">            tmp = tmp &gt;&gt; <span class="number">1</span></div><div class="line">        <span class="comment"># Agregar bytes a la lista:</span></div><div class="line">        [encodedText.append(i) <span class="keyword">for</span> i <span class="keyword">in</span> byte[::<span class="number">-1</span>]]</div><div class="line"></div><div class="line">    <span class="keyword">return</span> encodedText</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">testEncoding</span><span class="params">(letter)</span>:</span></div><div class="line">    print(<span class="string">"letter\t"</span>, letter)</div><div class="line">    print(<span class="string">"Ordinal\t"</span>, ord(letter))</div><div class="line">    print(<span class="string">"Binary\t"</span>, bin(ord(letter)))</div><div class="line">    print(<span class="string">"Encode\t"</span>, getEncodedText(<span class="number">0</span>, letter))</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">testEncoding(<span class="string">"h"</span>)</div></pre></td></tr></table></figure>
+<pre><code>letter     h
+Ordinal     104
+Binary     0b1101000
+Encode     [0, 1, 1, 0, 1, 0, 0, 0]
+</code></pre><h3 id="Texto-a-bits"><a href="#Texto-a-bits" class="headerlink" title="Texto a bits"></a>Texto a bits</h3><p>Agregando el EOF</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getEncodedText</span><span class="params">(nbits, text)</span>:</span></div><div class="line">    encodedText = []</div><div class="line"></div><div class="line">    <span class="comment">#Convertir cada caracter a bits y agregarlos a una lista:</span></div><div class="line">    <span class="keyword">for</span> char <span class="keyword">in</span> text:</div><div class="line">        byte = []</div><div class="line">        tmp = ord(char)</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">8</span>):</div><div class="line">            byte.append(tmp &amp; <span class="number">1</span>)</div><div class="line">            tmp = tmp &gt;&gt; <span class="number">1</span></div><div class="line">        <span class="comment"># Agregar byts a la lista:</span></div><div class="line">        [encodedText.append(i) <span class="keyword">for</span> i <span class="keyword">in</span> byte[::<span class="number">-1</span>]]</div><div class="line"></div><div class="line">    <span class="comment"># Convertir cada caracter a bits y agregarlos a una lista:</span></div><div class="line">    <span class="keyword">for</span> char <span class="keyword">in</span> END_OF_FILE:</div><div class="line">        byte = []</div><div class="line">        tmp = ord(char)</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">8</span>):</div><div class="line">            byte.append(tmp &amp; <span class="number">1</span>)</div><div class="line">            tmp = tmp &gt;&gt; <span class="number">1</span></div><div class="line">        <span class="comment"># Agregar byts a la lista:</span></div><div class="line">        [encodedText.append(i) <span class="keyword">for</span> i <span class="keyword">in</span> byte[::<span class="number">-1</span>]]</div><div class="line"></div><div class="line">    <span class="comment">#Insertar al inicio los NBits para poder después decriptar:</span></div><div class="line">    [encodedText.insert(<span class="number">0</span>, i) <span class="keyword">for</span> i <span class="keyword">in</span> getEncodedNbits(nbits)]</div><div class="line"></div><div class="line">    <span class="keyword">return</span> encodedText</div></pre></td></tr></table></figure>
+<h2 id="Codificacion-del-texto-en-la-imagen"><a href="#Codificacion-del-texto-en-la-imagen" class="headerlink" title="Codificación del texto en la imagen"></a>Codificación del texto en la imagen</h2><p>Para aplicar la codificación a la imagen se recorre la imagen como un arreglo de dos dimensiones, entendiendo que cada pixel se comporta como un byte, que compone una matriz que describe los distintos tonos de grises que componen la imagen. En este loop se aplica la máscara a cada byte y se agrega el texto desde la lista calculada anteriormente. El proceso se realiza por el siguiente código:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">encode</span><span class="params">(imageFilename, textFilename, nbits)</span>:</span></div><div class="line">    image = io.imread(imageFilename)</div><div class="line">    text = open(textFilename,<span class="string">'r'</span>).read()</div><div class="line">    mask = getMask(nbits)</div><div class="line">    encodedText = getEncodedText(nbits, text)</div><div class="line"></div><div class="line">    textCount = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> range(<span class="number">0</span>,len(image)):</div><div class="line">        <span class="keyword">for</span> column <span class="keyword">in</span> range(<span class="number">0</span>,len(image[row])):</div><div class="line">            <span class="comment">#<span class="doctag">TODO:</span> Check que el texto entre en la imagen; Tirar exception;</span></div><div class="line">            <span class="keyword">if</span>(textCount &lt; len(encodedText)):</div><div class="line">                <span class="keyword">if</span>(textCount &lt; <span class="number">4</span>):</div><div class="line">                    image[row][column] = (image[row][column] &amp; getMask(<span class="number">1</span>)) | (encodedText[textCount])</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    image[row][column] = (image[row][column] &amp; mask) | (encodedText[textCount] &lt;&lt; int(nbits)<span class="number">-1</span>)</div><div class="line"></div><div class="line">                textCount += <span class="number">1</span></div><div class="line">                </div><div class="line">    <span class="keyword">return</span> image</div></pre></td></tr></table></figure>
+<h2 id="Pruebas-de-codificacion"><a href="#Pruebas-de-codificacion" class="headerlink" title="Pruebas de codificación"></a>Pruebas de codificación</h2><p>Ha de notarse que los primeros 4 bits, que describen los nBits, se aplican siempre al bit menos significativo para que el decodificador los pueda leer desde la misma entrada. Como se revisará más adelante, la idea de agregarlos en el LSB es no alterer visualmente la imagen.</p>
+<p>El resultado de aplicar la codificación tiene distintos resultados según el bit significativo que se ocupe. Es recomendable aplicarlo para un N&lt;=2. Para N mayores, la imagen empieza a distorcionarse por la modificación de los colores de la misma. En las siguientes imagenes se puede apreciar los distintos resultados:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">image = encode(imageFilename, textFilename, <span class="number">1</span>)</div><div class="line">io.imshow(image)</div><div class="line">io.show()</div></pre></td></tr></table></figure>
+<p><img src="esteganografia/output_26_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">image = encode(imageFilename, textFilename, <span class="number">4</span>)</div><div class="line">io.imshow(image)</div><div class="line">io.show()</div></pre></td></tr></table></figure>
+<p><img src="esteganografia/output_27_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">image = encode(imageFilename, textFilename, <span class="number">5</span>)</div><div class="line">io.imshow(image)</div><div class="line">io.show()</div></pre></td></tr></table></figure>
+<p><img src="esteganografia/output_28_0.png" alt="png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">image = encode(imageFilename, textFilename, <span class="number">8</span>)</div><div class="line">io.imshow(image)</div><div class="line">io.show()</div></pre></td></tr></table></figure>
+<p><img src="esteganografia/output_29_0.png" alt="png"></p>
+<h1 id="Decodificacion"><a href="#Decodificacion" class="headerlink" title="Decodificación"></a>Decodificación</h1><p>Para la decodificación, se realiza el proceso inverso. En primera instancia se leen los nbits de los primeros 4 bits y posteriormente se lee el resto de los caracteres a un arreglo. Se termina este proceso cuando se encuentra el EOF designado. El proceso se puede apreciar por el siguiente código:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">bitstring_to_bytes</span><span class="params">(s)</span>:</span></div><div class="line">    <span class="keyword">return</span> int(s, <span class="number">2</span>).to_bytes(len(s) // <span class="number">8</span>, byteorder=<span class="string">'big'</span>)</div></pre></td></tr></table></figure>
+<h2 id="Decodificar-texto"><a href="#Decodificar-texto" class="headerlink" title="Decodificar texto"></a>Decodificar texto</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">decodeText</span><span class="params">(encodedText)</span>:</span></div><div class="line">    encodedTextNoBits = encodedText</div><div class="line">    bitString = <span class="string">""</span>.join([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> encodedTextNoBits])</div><div class="line">    decodedText = str(bitstring_to_bytes(bitString))[<span class="number">2</span>:<span class="number">-1</span>]</div><div class="line">    <span class="keyword">return</span> decodedText</div></pre></td></tr></table></figure>
+<h2 id="Decodificacion-de-imagen"><a href="#Decodificacion-de-imagen" class="headerlink" title="Decodificación de imagen"></a>Decodificación de imagen</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">decode</span><span class="params">(imageFilename)</span>:</span></div><div class="line">    image = io.imread(imageFilename)</div><div class="line">    encodedText = []</div><div class="line">    textCount = <span class="number">0</span></div><div class="line">    nbits = <span class="number">0</span></div><div class="line">    <span class="keyword">for</span> row <span class="keyword">in</span> range(<span class="number">0</span>,len(image)):</div><div class="line">        <span class="keyword">for</span> column <span class="keyword">in</span> range(<span class="number">0</span>,len(image[row])):</div><div class="line">            <span class="keyword">if</span> textCount &lt; <span class="number">4</span>:</div><div class="line">                encodedText.append(image[row][column] &amp; <span class="number">1</span>)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                <span class="keyword">if</span> textCount == <span class="number">4</span>:</div><div class="line">                    nbits = <span class="number">8</span>*encodedText[<span class="number">0</span>] + <span class="number">4</span>*encodedText[<span class="number">1</span>] + <span class="number">2</span>*encodedText[<span class="number">2</span>]+ <span class="number">1</span>*encodedText[<span class="number">3</span>]</div><div class="line"></div><div class="line">                encodedText.append((image[row][column] &gt;&gt; (nbits<span class="number">-1</span>)) &amp; <span class="number">1</span>)</div><div class="line">                <span class="keyword">if</span>((textCount+<span class="number">5</span>)%<span class="number">8</span> == <span class="number">0</span> <span class="keyword">and</span> textCount &gt; <span class="number">36</span>):</div><div class="line">                    <span class="keyword">if</span>(decodeText(encodedText[<span class="number">-32</span>:]) == END_OF_FILE):</div><div class="line">                        <span class="keyword">return</span> decodeText(encodedText[<span class="number">4</span>:<span class="number">-32</span>])</div><div class="line"></div><div class="line">            textCount += <span class="number">1</span></div></pre></td></tr></table></figure>
+<h2 id="Pruebas-de-decodificacion"><a href="#Pruebas-de-decodificacion" class="headerlink" title="Pruebas de decodificación"></a>Pruebas de decodificación</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(decode(<span class="string">"imagen_out.png"</span>))</div></pre></td></tr></table></figure>
+<pre><code>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus auctor maximus dignissim. Etiam luctus elit nec risus varius volutpat. Vivamus arcu ante, tempus nec luctus commodo, blandit vel neque. Pellentesque semper posuere purus, et finibus leo accumsan non. Sed sed felis vel erat pretium molestie. Nulla facilisi. Proin vel lacus et leo tristique luctus eu nec nulla. Nullam finibus lobortis porta. Vestibulum sit amet lacus eros. Aliquam tempus augue quis lacus gravida aliquet.\n\nMaecenas eget purus est. Etiam ac lectus ac magna commodo molestie in eget ante. Vestibulum porta mauris nec risus finibus, nec elementum purus vulputate. Nunc non eros lobortis, vestibulum nibh eget, sagittis justo. Suspendisse eget tellus vitae dolor fermentum elementum. Nulla luctus nulla vel volutpat dictum. Morbi ac nulla interdum, semper lacus quis, eleifend eros.\n\nPellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse potenti. Suspendisse potenti. Cras eget massa urna. Pellentesque quam neque, euismod sagittis eros sed, consequat fringilla augue. In ac euismod diam. Morbi maximus semper erat, pulvinar efficitur ligula congue eu. Donec ante arcu, feugiat sit amet tincidunt in, interdum id nibh. In non posuere nisl. Vivamus vitae justo in tellus tincidunt facilisis in ut dui. Vestibulum sed mauris aliquet, blandit lacus sit amet, ultrices nisl. Aliquam eget pharetra mi, eget venenatis enim. Vivamus a placerat enim.\n\nDonec varius aliquet velit, id mollis massa ultrices sit amet. Mauris lacus nunc, euismod non dignissim at, consectetur vitae enim. Phasellus volutpat leo urna, a posuere felis volutpat quis. Ut elementum urna sed arcu fermentum ultricies. Mauris at massa diam. Vestibulum id ipsum rutrum, ultrices metus id, pharetra tortor. Vestibulum lacinia odio nec faucibus lobortis. Curabitur convallis, velit quis feugiat scelerisque, eros elit lobortis tellus, non tempor lectus dolor non risus. Suspendisse a condimentum mauris. Cras finibus nec lacus at consequat. Donec et neque et nibh placerat efficitur vel non magna. Mauris augue nunc, placerat quis tellus eu, viverra fermentum quam. Mauris at metus pretium, rhoncus nisi vitae, scelerisque elit.\n\nIn massa erat, dignissim quis enim in, egestas aliquam dolor. Morbi condimentum blandit placerat. Cras ultricies, nisi in tincidunt facilisis, lacus nibh iaculis mi, vitae cursus quam sem sit amet urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed nisi lectus, placerat at scelerisque sollicitudin, cursus eget erat. Cras eu volutpat nisl, sit amet tincidunt nisl. Proin a elit elit. Sed et lectus fermentum, congue est vel, mattis mi.
+</code></pre><h1 id="Conclusiones"><a href="#Conclusiones" class="headerlink" title="Conclusiones"></a>Conclusiones</h1><p>El proceso de codificación de texto en imágenes permite esconder texto. Una de las limitaciones principales tiene que ver con que el texto que se utilice debe ser menor en longitud al tamaño de la imagen. </p>
+<p>Lo anterior podría compensarse cuando se utilizan imánenes en colores ya que se triplica la cantidad de bytes disponibles para la codificación. Si se ocupan imágenes con transparencias (alpha). Podría agregarse una dimensión más, siempre y cuando considerando que sería más oportuno hacerlo con el bit menos significativo.</p>
+<p>Uno de los principales problemas para manejar la encriptación tuvo que ver con el órden de los bits en la lista de los bits.</p>
+<p>Otro punto interesante fue el delimitador final que se utilizó. Se considera que podria ser posible incluir el tamaño de la imagen al principio, sin embargo esto sería variable dependiento del tamaño.</p>
+<p>Finalmente se puede mencionar que existen varios paquetes públicos para realizar esta encriptación. Algunos con varias opciones de configuración.</p>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+        
+            <li class="previous">
+                <a href= "/2017/09/23/djangoHeroku/" title= djangoHeroku >
+                    <span>Previous Post</span>
+                    <span>djangoHeroku</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!--PC版-->
+
+    <!--PC版-->
+
+
+    
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ignacio.delaparra@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/gabrieldelaparra" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <a href="//twitter.com/gabeldelaostia" class="iconfont-archer twitter" target="_blank" title="twitter"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">Theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper">
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Esteganografia"><span class="toc-number">1.</span> <span class="toc-text">Esteganografía</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduccion"><span class="toc-number">2.</span> <span class="toc-text">Introducción</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Imports"><span class="toc-number">3.</span> <span class="toc-text">Imports</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Imagen-original"><span class="toc-number">4.</span> <span class="toc-text">Imagen original</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Texto-original"><span class="toc-number">5.</span> <span class="toc-text">Texto original</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Codificacion"><span class="toc-number">6.</span> <span class="toc-text">Codificación</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Calculo-de-la-mascara"><span class="toc-number">6.1.</span> <span class="toc-text">Calculo de la máscara</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Codificacion-del-texto-a-bits"><span class="toc-number">6.2.</span> <span class="toc-text">Codificación del texto a bits</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Conversion-a-bits"><span class="toc-number">6.2.1.</span> <span class="toc-text">Conversión a bits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Letras-a-bits"><span class="toc-number">6.2.2.</span> <span class="toc-text">Letras a bits</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Texto-a-bits"><span class="toc-number">6.2.3.</span> <span class="toc-text">Texto a bits</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Codificacion-del-texto-en-la-imagen"><span class="toc-number">6.3.</span> <span class="toc-text">Codificación del texto en la imagen</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pruebas-de-codificacion"><span class="toc-number">6.4.</span> <span class="toc-text">Pruebas de codificación</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Decodificacion"><span class="toc-number">7.</span> <span class="toc-text">Decodificación</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Decodificar-texto"><span class="toc-number">7.1.</span> <span class="toc-text">Decodificar texto</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Decodificacion-de-imagen"><span class="toc-number">7.2.</span> <span class="toc-text">Decodificación de imagen</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pruebas-de-decodificacion"><span class="toc-number">7.3.</span> <span class="toc-text">Pruebas de decodificación</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusiones"><span class="toc-number">8.</span> <span class="toc-text">Conclusiones</span></a></li></ol>
+    </div>
+    
+    <div class="back-top">&#xe639;</div>
+    <div class="sidebar">
+    <div class="sidebar-header sidebar-header-show-archive">
+        <div class="sidebar-category">
+            <span class="sidebar-archive-link"><span class="iconfont-archer">&#xe67d;</span>Archive</span>
+            <span class="sidebar-tags-link"><span class="iconfont-archer">&#xe610;</span>Tag</span>
+        </div>
+    </div>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-archive">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 6 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/30</span><a class="archive-post-title" href= "/2017/09/30/esteganografia/" >esteganografia</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/23</span><a class="archive-post-title" href= "/2017/09/23/djangoHeroku/" >djangoHeroku</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span><a class="archive-post-title" href= "/2017/09/16/freshStart/" >freshStart</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/09</span><a class="archive-post-title" href= "/2017/09/09/hexoBlog/" >hexoBlog</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/02</span><a class="archive-post-title" href= "/2017/09/02/firstBorn/" >firstBorn</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/02</span><a class="archive-post-title" href= "/2017/09/02/hello-world/" >Hello World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name"><a href= "#">Python</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Github</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Django</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Heroku</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Hexo</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Ghost</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Markdown</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Ubuntu</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">ZSH</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">VirtualEnv</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">HelloWorld</a></span>
+    
+    </div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #888; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tag-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var jsInfo = {
+        root: '/'
+    }
+</script>
+    <!-- 不蒜子  -->
+    
+    <!-- CNZZ统计  -->
+    
+    </div>
+    </body>
+</html>
+
+
