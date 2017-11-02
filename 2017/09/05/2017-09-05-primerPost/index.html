@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>
+        
+        First born · wororo
+        
+    </title>
+    <link rel="icon" href= /assests/favicon.ico>
+    <!-- TODO: 在font-face加载完毕后改变字体  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
+    <!-- 提前加载place holder  -->
+    <style type="text/css">
+        @font-face {
+            font-family: 'Oswald-Regular';
+            src: url('/font/Oswald-Regular.ttf');
+        }
+    </style>
+    <style type="text/css">
+        .site-intro-placeholder {
+            position: absolute;
+            z-index: -2;
+            top: 0;
+            left: 0px;
+            width: calc(100% + 300px);
+            height: 100%;
+            background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+            background-position: center center;
+            transform: translate3d(-226px, 0, 0);
+            animation: gradient-move 2.5s ease-out 0s 1;
+        }
+        @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+    <link rel="stylesheet" href = /css/style.css?v=20171020 />
+    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+    
+    <script src="/scripts/main.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >wororo.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">First born</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>wororo.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-img" style="background-image: url(/intro/back1.jpg)"></div>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            First born
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = Hexo>Hexo</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = Ghost>Ghost</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = Markdown>Markdown</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = Github>Github</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2017/09/05</span>
+            </div>
+        
+    </div>
+</div>
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <script>
+            var browser = {
+                    versions: function () {
+                        var u = window.navigator.userAgent;
+                        return {
+                            userAgent: u,
+                            trident: u.indexOf('Trident') > -1, //IE内核
+                            presto: u.indexOf('Presto') > -1, //opera内核
+                            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                            iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+                            iPad: u.indexOf('iPad') > -1, //是否为iPad
+                            webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+                            weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+                            uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+                        };
+                    }()
+                }
+
+            function fontLoaded(){
+                console.log('font loaded');
+                if (document.getElementsByClassName('site-intro-meta')) {
+                    document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+                    document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+                    var postIntroTags = document.getElementsByClassName('post-intro-tags')[0],
+                        postIntroMeat = document.getElementsByClassName('post-intro-meta')[0];
+                        if (postIntroTags) {
+                            postIntroTags.classList.add('post-fade-in');
+                        }
+                        if (postIntroMeat) {
+                            postIntroMeat.classList.add('post-fade-in');
+                        }
+                    }
+                }
+                
+            console.log("userAgent:" + browser.versions.userAgent);
+            // UC不支持跨域，所以直接显示
+            if (browser.versions.uc) {
+                console.log("UCBrowser");
+                fontLoaded();
+            } else {
+                WebFont.load({
+                    custom: {
+                        families: ['Oswald-Regular']
+                    },
+                    loading: function () {  //所有字体开始加载
+                        // console.log('loading');
+                    },
+                    active: function () {  //所有字体已渲染
+                        fontLoaded();
+                    },
+                    inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+                        console.log('inactive: timeout');
+                        fontLoaded();
+                    },
+                    timeout: 7000 // Set the timeout to two seconds
+                });
+            }
+        </script>
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="Nace-un-Blog"><a href="#Nace-un-Blog" class="headerlink" title="Nace un Blog"></a>Nace un Blog</h1><p>Había estado mucho tiempo pensando en hacer un blog para los proyectos que desarrollo. Esto sirve para dos cosas: </p>
+<ol>
+<li>Tener un registro ordenado de las cosas que hago</li>
+<li>Muchas pegas piden tener una página o un github actualizado, o incluso con proyectos. </li>
+</ol>
+<p>Sobre el primer punto, si bien ya tenía la página de github.io pero era recontra básica, (por no decir espantosa).<br><img src="/images/firstPage.PNG" alt="Old Personal Page"></p>
+<p>Sobre los proyectos, tengo algunos pero no están muy presentables. Así que le empecé a meter mano y partí con mi primer blog, sobre como crear un blog.</p>
+<h1 id="Ghost"><a href="#Ghost" class="headerlink" title="Ghost"></a>Ghost</h1><p>Me inspiré en <a href="http://gsoc.theblogbowl.in/" target="_blank" rel="external">otro blog</a> y su <a href="https://github.com/sdaityari/blog" target="_blank" rel="external">repo</a>. No se como llegué al blog, pero se veía bien y ya había oido antes hablar sobre <a href="https://github.com/tryghost/Ghost" target="_blank" rel="external">Ghost</a>. Decidí revisar un par de tutoriales para convencerme: el <a href="https://github.com/paladini/ghost-on-github-pages" target="_blank" rel="external">tutorial de Fernando Paladini</a>, <a href="http://briank.im/i-see-ghosts/" target="_blank" rel="external">este</a> y <a href="https://www.sitepoint.com/create-static-ghost-blog-buster/" target="_blank" rel="external">este</a> (seguí el primero) y en unos minutos ya estaba remodelando la interfaz del Blog. </p>
+<p>Algo que faltó en el tutorial, es mencionar que al hacer el commit después del <code>npm install</code>, demora siglos con los cambios de final de línea de Windows.</p>
+<h2 id="Ded"><a href="#Ded" class="headerlink" title="Ded"></a>Ded</h2><p>Bueno, agregué mi usuario, mis cuentas a twitter y empecé a redactar este blog, todo iba viento en popa. Solo faltaba hacer una prueba final, agregar este post, pushar a github y ver si se hacía la magia. </p>
+<p>Al hablar en condicional, me refiero a que no funcionó. Los tutoriales indican que hay que tener <a href="https://github.com/axitkhurana/buster/" target="_blank" rel="external">buster</a>. Buster es un <em>Brute force static site generator for Ghost</em>, genera páginas estáticas (requeridas para la página personal de github) a partir de una instancia de un servidor local. En este caso el de Ghost.</p>
+<p>Lamentablemente, el repositorio está hardcodeado para funcionar con Linux y en <a href="http://leftofnull.com/2014/02/24/using-github-pages-with-ghost-and-buster-on-windows-part-2/" target="_blank" rel="external">este blog</a> enseñan las modificaciones que son necesarias hacer al código del repositorio para que funcione en Windows. De hecho, ya hay un <a href="https://github.com/leftofnull/buster" target="_blank" rel="external">repo</a> que tiene estas modificaciones listas. </p>
+<p>Bueno, pero eso no fue suficiente. Buster solo está disponible para Python2 y yo tengo Python3 instalado por lo que me pareció que la vuelta para hacerlo andar era muy larga.</p>
+<h1 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h1><p>Por consejo de <a href="https://github.com/PabloReszczynski" target="_blank" rel="external">PabloRe</a>, pasé a <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>. Hexo es otro Framework para blogs, que tiene incluida la funcionalidad para generar una página estática. Suena como algo más sencillo ahora. </p>
+<p>Lo único fue que como ya tenía el repositorio, el <code>hexo init &lt;folder&gt;</code> requiere una carpeta vacía, así que tuve que crear una carpeta temporal, luego mover los archivos dentro. La misma CLI daba esa solución. Muy amigable. Luego de hacer <code>hexo server</code>, estaba ahi mismo el tutorial para generar la página estática y hacer el deploy. </p>
+<p>Crucé los dedos, hice un <code>hexo deploy</code> y voilà. So easy. Ahora si amononar la página, cambiar el theme, agregar mi info personal y agregar este post.</p>
+<h1 id="Update"><a href="#Update" class="headerlink" title="Update"></a>Update</h1><p>Funciona, maravillosamente bien. Debo mencionar que Ghost es mucho más profesional. </p>
+<p>Algunas de las cosas que, en el poco tiempo que lo ocupé, me gustaron: </p>
+<ul>
+<li>UI para editar el Markdown;</li>
+<li>Consola para manejar usuarios y los posts;</li>
+</ul>
+<h1 id="Ademas"><a href="#Ademas" class="headerlink" title="Además"></a>Además</h1><p>Ah, en el antíguo site, tenía un <a href="https://docs.google.com/viewer?url=https://github.com/gabrieldelaparra/Curriculae/raw/master/Current/CV.pdf" target="_blank" rel="external">link a mi CV en GoogleDocs</a>. y la <a href="https://www.overleaf.com/read/dhfjscfwpnxf" target="_blank" rel="external">version Overleaf de lectura</a>Como no quería perderlo, lo dejo acá, ya más adelante veré como lo coloco.</p>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+            <li class="next">
+                <a href= "/2017/09/06/hexoBlog/" title= hexoBlog >
+                    <span>Next Post</span>
+                    <span>hexoBlog</span>
+                </a>
+            </li>
+        
+        
+            <li class="previous">
+                <a href= "/2017/09/05/hello-world/" title= Hello World >
+                    <span>Previous Post</span>
+                    <span>Hello World</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!--PC版-->
+
+    <!--PC版-->
+
+
+    
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ignacio.delaparra@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/gabrieldelaparra" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <a href="//twitter.com/gabeldelaostia" class="iconfont-archer twitter" target="_blank" title="twitter"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">Theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper">
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Nace-un-Blog"><span class="toc-number">1.</span> <span class="toc-text">Nace un Blog</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ghost"><span class="toc-number">2.</span> <span class="toc-text">Ghost</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ded"><span class="toc-number">2.1.</span> <span class="toc-text">Ded</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Hexo"><span class="toc-number">3.</span> <span class="toc-text">Hexo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Update"><span class="toc-number">4.</span> <span class="toc-text">Update</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Ademas"><span class="toc-number">5.</span> <span class="toc-text">Además</span></a></li></ol>
+    </div>
+    
+    <div class="back-top">&#xe639;</div>
+    <div class="sidebar">
+    <div class="sidebar-header sidebar-header-show-archive">
+        <div class="sidebar-category">
+            <span class="sidebar-archive-link"><span class="iconfont-archer">&#xe67d;</span>Archive</span>
+            <span class="sidebar-tags-link"><span class="iconfont-archer">&#xe610;</span>Tag</span>
+        </div>
+    </div>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-archive">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 3 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/06</span><a class="archive-post-title" href= "/2017/09/06/hexoBlog/" >hexoBlog</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2017/09/05/2017-09-05-primerPost/" >First born</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/05</span><a class="archive-post-title" href= "/2017/09/05/hello-world/" >Hello World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name"><a href= "#">Hexo</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Ghost</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Markdown</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Github</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">HelloWorld</a></span>
+    
+    </div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #888; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tag-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var jsInfo = {
+        root: '/'
+    }
+</script>
+    <!-- 不蒜子  -->
+    
+    <!-- CNZZ统计  -->
+    
+    </div>
+    </body>
+</html>
+
+
