@@ -202,7 +202,7 @@
 <h2 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h2><h3 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h3><ul>
 <li>hnw.vscode-auto-open-markdown-preview</li>
 <li>yzhang.markdown-all-in-one</li>
-<li>telesoho.vscode-markdown-paste-image</li>
+<li>telesoho.vscode-markdown-paste-image (requires <code>sudo apt install xclip</code>)</li>
 <li>mdickin.markdown-shortcuts</li>
 <li>evilz.vscode-reveal</li>
 </ul>
@@ -218,7 +218,7 @@
 <h1 id="Bash-autocomplete-ignore-case"><a href="#Bash-autocomplete-ignore-case" class="headerlink" title="Bash autocomplete ignore case"></a>Bash autocomplete ignore case</h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">if</span> [ ! -a ~/.inputrc ]; <span class="keyword">then</span> <span class="built_in">echo</span> <span class="string">'$include /etc/inputrc'</span> &gt; ~/.inputrc; <span class="keyword">fi</span></div><div class="line"><span class="built_in">echo</span> <span class="string">'set completion-ignore-case On'</span> &gt;&gt; ~/.inputrc</div></pre></td></tr></table></figure>
 <h1 id="Oh-my-ZSH"><a href="#Oh-my-ZSH" class="headerlink" title="Oh-my-ZSH"></a><a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">Oh-my-ZSH</a></h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ sudo apt install zsh</div><div class="line">$ sh -c <span class="string">"<span class="variable">$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>"</span></div></pre></td></tr></table></figure>
 <ul>
-<li>Add to .zshrc:<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ZSH_THEME=&quot;agnoster&quot;</div><div class="line"></div><div class="line">plugins=(git python django heroku node pip virtualenv zsh-autosuggestions)</div><div class="line">alias py=&quot;python3&quot;</div><div class="line">alias pip=&quot;pip3&quot;</div></pre></td></tr></table></figure>
+<li>Add to .zshrc:<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">ZSH_THEME=<span class="string">"agnoster"</span></div><div class="line"></div><div class="line">plugins=(git python django heroku node pip virtualenv zsh-autosuggestions)</div><div class="line"><span class="built_in">alias</span> py=<span class="string">"python3"</span></div><div class="line"><span class="built_in">alias</span> pip=<span class="string">"pip3"</span></div><div class="line"><span class="built_in">alias</span> gcm=<span class="string">"git commit -m"</span></div><div class="line"><span class="built_in">alias</span> pm=<span class="string">"python3 manage.py"</span></div><div class="line"></div><div class="line">workon default</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="Hack-Font"><a href="#Hack-Font" class="headerlink" title="Hack Font"></a>Hack Font</h2><ul>
@@ -231,16 +231,16 @@
 </ul>
 <h2 id="zsh-autosuggestions"><a href="#zsh-autosuggestions" class="headerlink" title="zsh-autosuggestions"></a><a href="https://github.com/zsh-users/zsh-autosuggestions" target="_blank" rel="external">zsh-autosuggestions</a></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> git://github.com/zsh-users/zsh-autosuggestions <span class="variable">$ZSH_CUSTOM</span>/plugins/zsh-autosuggestions</div></pre></td></tr></table></figure>
 <ul>
-<li>Add to .zshrc: (included before)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plugins=(zsh-autosuggestions)</div></pre></td></tr></table></figure>
+<li>Add to .zshrc: (included before)<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">plugins=(zsh-autosuggestions)</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="Node-via-nvm"><a href="#Node-via-nvm" class="headerlink" title="Node via nvm"></a>Node <a href="https://github.com/creationix/nvm" target="_blank" rel="external">via nvm</a></h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash</div></pre></td></tr></table></figure>
+<h1 id="Node-via-nvm"><a href="#Node-via-nvm" class="headerlink" title="Node via nvm"></a>Node <a href="https://github.com/creationix/nvm" target="_blank" rel="external">via nvm</a></h1><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash</div></pre></td></tr></table></figure>
 <ul>
 <li>Add to .zshrc:<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">"<span class="variable">$HOME</span>/.nvm"</span></div><div class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/nvm.sh"</span> </div><div class="line">[ -s <span class="string">"<span class="variable">$NVM_DIR</span>/bash_completion"</span> ] &amp;&amp; \. <span class="string">"<span class="variable">$NVM_DIR</span>/bash_completion"</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ nvm install stable</div></pre></td></tr></table></figure>
-<h1 id="Virtual-Environments"><a href="#Virtual-Environments" class="headerlink" title="Virtual Environments"></a>Virtual Environments</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo pip install virtualenv</div><div class="line">sudo pip install virtualenvwrapper</div></pre></td></tr></table></figure>
+<h1 id="Virtual-Environments"><a href="#Virtual-Environments" class="headerlink" title="Virtual Environments"></a>Virtual Environments</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo pip install virtualenv</div><div class="line">sudo pip install virtualenvwrapper</div><div class="line"></div><div class="line">mkvirtualenv default</div></pre></td></tr></table></figure>
 <ul>
 <li>Add to .zshrc:<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> WORKON_HOME=<span class="variable">$HOME</span>/.virtualenvs</div><div class="line"><span class="built_in">export</span> PROJECT_HOME=<span class="variable">$HOME</span>/Devel</div><div class="line"><span class="built_in">export</span> VIRTUALENVWRAPPER_SCRIPT=/usr/<span class="built_in">local</span>/bin/virtualenvwrapper.sh</div><div class="line"><span class="built_in">export</span> VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3</div><div class="line"><span class="built_in">source</span> /usr/<span class="built_in">local</span>/bin/virtualenvwrapper_lazy.sh</div></pre></td></tr></table></figure>
 </li>
@@ -432,6 +432,8 @@
     
     
     
+    
+    
     <div class="total-archive"> Total : 8 </div>
     
     <div class="post-archive">
@@ -495,15 +497,15 @@
     
         <span class="sidebar-tag-name"><a href= "#">Heroku</a></span>
     
-        <span class="sidebar-tag-name"><a href= "#">Images</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">CC5508</a></span>
-    
         <span class="sidebar-tag-name"><a href= "#">Hexo</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">Ghost</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">Markdown</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Images</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">CC5508</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">Ubuntu</a></span>
     

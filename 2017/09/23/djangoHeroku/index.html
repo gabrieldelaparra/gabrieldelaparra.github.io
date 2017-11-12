@@ -202,7 +202,7 @@
 
 **Heroku Web:** Deploy Tab -&gt; Connect to Github -&gt; Connect -&gt; Enable Automatic Deploys
 </code></pre><p>$ git push heroku master<br>``` </p>
-<h2 id="Django-in-Heroku"><a href="#Django-in-Heroku" class="headerlink" title="Django in Heroku"></a>Django in Heroku</h2><h2 id="Run-Local"><a href="#Run-Local" class="headerlink" title="Run Local"></a>Run Local</h2><pre><code>$ heroku local
+<h2 id="Commands-in-Heroku"><a href="#Commands-in-Heroku" class="headerlink" title="Commands in Heroku"></a>Commands in Heroku</h2><h2 id="Run-Local"><a href="#Run-Local" class="headerlink" title="Run Local"></a>Run Local</h2><pre><code>$ heroku local
 </code></pre><h3 id="Migrate-on-server-side"><a href="#Migrate-on-server-side" class="headerlink" title="Migrate on server side"></a>Migrate on server side</h3><pre><code>$ heroku run python manage.py makemigrations
 $ heroku run python manage.py migrate
 </code></pre><h3 id="Create-Admin-on-server-side"><a href="#Create-Admin-on-server-side" class="headerlink" title="Create Admin on server side"></a>Create Admin on server side</h3><pre><code>$ heroku run python manage.py createsuperuser
@@ -284,7 +284,7 @@ $ heroku run python manage.py migrate
         <div class="toc-catalog">
             <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
         </div>
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Base-Django-Heroku"><span class="toc-number">1.</span> <span class="toc-text">Base Django-Heroku</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Virtual-Environment"><span class="toc-number">2.</span> <span class="toc-text">Virtual Environment</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements"><span class="toc-number">2.1.</span> <span class="toc-text">Requirements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-a-Virtual-Environment"><span class="toc-number">2.2.</span> <span class="toc-text">Create a Virtual Environment</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Django"><span class="toc-number">3.</span> <span class="toc-text">Django</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements-1"><span class="toc-number">3.1.</span> <span class="toc-text">Requirements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Remove-Secret-Key-Using-python-dotenv"><span class="toc-number">3.2.</span> <span class="toc-text">Remove Secret Key (Using python_dotenv)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Github"><span class="toc-number">4.</span> <span class="toc-text">Github</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Github-Repo-myHerokuProjectGit"><span class="toc-number">4.1.</span> <span class="toc-text">Create Github Repo myHerokuProjectGit</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Heroku"><span class="toc-number">5.</span> <span class="toc-text">Heroku</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements-2"><span class="toc-number">5.1.</span> <span class="toc-text">Requirements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Django-in-Heroku"><span class="toc-number">5.2.</span> <span class="toc-text">Django in Heroku</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Run-Local"><span class="toc-number">5.3.</span> <span class="toc-text">Run Local</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Migrate-on-server-side"><span class="toc-number">5.3.1.</span> <span class="toc-text">Migrate on server side</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-Admin-on-server-side"><span class="toc-number">5.3.2.</span> <span class="toc-text">Create Admin on server side</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Base-Django-Heroku"><span class="toc-number">1.</span> <span class="toc-text">Base Django-Heroku</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Virtual-Environment"><span class="toc-number">2.</span> <span class="toc-text">Virtual Environment</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements"><span class="toc-number">2.1.</span> <span class="toc-text">Requirements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-a-Virtual-Environment"><span class="toc-number">2.2.</span> <span class="toc-text">Create a Virtual Environment</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Django"><span class="toc-number">3.</span> <span class="toc-text">Django</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements-1"><span class="toc-number">3.1.</span> <span class="toc-text">Requirements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Remove-Secret-Key-Using-python-dotenv"><span class="toc-number">3.2.</span> <span class="toc-text">Remove Secret Key (Using python_dotenv)</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Github"><span class="toc-number">4.</span> <span class="toc-text">Github</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Github-Repo-myHerokuProjectGit"><span class="toc-number">4.1.</span> <span class="toc-text">Create Github Repo myHerokuProjectGit</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Heroku"><span class="toc-number">5.</span> <span class="toc-text">Heroku</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Requirements-2"><span class="toc-number">5.1.</span> <span class="toc-text">Requirements</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Commands-in-Heroku"><span class="toc-number">5.2.</span> <span class="toc-text">Commands in Heroku</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Run-Local"><span class="toc-number">5.3.</span> <span class="toc-text">Run Local</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Migrate-on-server-side"><span class="toc-number">5.3.1.</span> <span class="toc-text">Migrate on server side</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-Admin-on-server-side"><span class="toc-number">5.3.2.</span> <span class="toc-text">Create Admin on server side</span></a></li></ol></li></ol></li></ol>
     </div>
     
     <div class="back-top">&#xe639;</div>
@@ -298,6 +298,8 @@ $ heroku run python manage.py migrate
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-archive">
     <!-- 在ejs中将archive按照时间排序 -->
+    
+    
     
     
     
@@ -447,15 +449,15 @@ $ heroku run python manage.py migrate
     
         <span class="sidebar-tag-name"><a href= "#">Heroku</a></span>
     
-        <span class="sidebar-tag-name"><a href= "#">Images</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">CC5508</a></span>
-    
         <span class="sidebar-tag-name"><a href= "#">Hexo</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">Ghost</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">Markdown</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Images</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">CC5508</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">Ubuntu</a></span>
     
