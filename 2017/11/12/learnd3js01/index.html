@@ -203,16 +203,15 @@
 <p>d3.select2 = function(selection) {<br>    return _select(“#d3-cell-2”).select(selection);<br>}<br>d3.selectAll2 = function(selection) {<br>    return _select(“#d3-cell-2”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-2"><br><br><svg><br/>    <circle cx="50" cy="50" r="30" fill="blue" stroke="black" stroke-width="5"/><br/></svg><br></g>
 
-
-<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h2><p>Cell comentada, para que no moleste.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    alert(<span class="string">"Hello, world!"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><img src="2017-11-12-02-03-58.png" alt=""></p>
+<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    alert(<span class="string">"Hello, world!"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
 <p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
 <p><script><br>_select = d3.select;</p>
 <p>d3.select3 = function(selection) {<br>    return _select(“#d3-cell-3”).select(selection);<br>}<br>d3.selectAll3 = function(selection) {<br>    return _select(“#d3-cell-3”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-3"><br><br><script><br>    alert(“Hello, world!”);<br></script><br></g>
 
-
+<p><img src="2017-11-12-02-05-50.png" alt=""></p>
 <h2 id="HTML-Console"><a href="#HTML-Console" class="headerlink" title="HTML Console"></a>HTML Console</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    console.log(d3.selectAll(<span class="string">"p"</span>));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
 <p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
@@ -220,7 +219,7 @@
 <p>d3.select4 = function(selection) {<br>    return _select(“#d3-cell-4”).select(selection);<br>}<br>d3.selectAll4 = function(selection) {<br>    return _select(“#d3-cell-4”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-4"><br><br><script><br>    console.log(d3.selectAll4(“p”));<br></script><br></g>
 
-
+<p><img src="2017-11-12-02-06-02.png" alt=""></p>
 <h1 id="d3-js"><a href="#d3-js" class="headerlink" title="d3.js"></a>d3.js</h1><p>d3 es una librería que permite agregar y modificar elementos en la estructura del DOM de HTML.</p>
 <p>Una diferencia de trabajar directamente en un archivo HTML, es necesario cambiar <code>d3.select(&quot;body&quot;).append(&quot;g&quot;)</code> sino generar un elemento <code>&lt;g /&gt;</code> y ocupar <code>d3.select(&quot;g&quot;)</code>.</p>
 <h2 id="Anadir-Elementos"><a href="#Anadir-Elementos" class="headerlink" title="Añadir Elementos"></a>Añadir Elementos</h2><p>Lo primero será crear elementos dentro de la celda de salida. </p>
@@ -232,7 +231,7 @@
 <p>d3.select5 = function(selection) {<br>    return _select(“#d3-cell-5”).select(selection);<br>}<br>d3.selectAll5 = function(selection) {<br>    return _select(“#d3-cell-5”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-5"><br><br><g><br><br><script><br>    d3.select5(“g”)<br>        .text(“Hello World”);<br></script><br></g>
 
-
+<p><img src="2017-11-12-02-06-15.png" alt=""></p>
 <h3 id="HTML-DOM-Elements"><a href="#HTML-DOM-Elements" class="headerlink" title="HTML DOM Elements"></a>HTML DOM Elements</h3><p>Si quisiera agregar más de un párrafo, se pensaría intuitivamente que se debe repetir el código, sin embargo, dentro del DOM HTML, se trata de un solo elemento, llamado <strong><code>&lt;g /&gt;</code></strong>. Lo que sucede en la siguiente celda es que se agrega dos valores de texto al mismo elemento.</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    d3.select(<span class="string">"g"</span>).text(<span class="string">"Hello World 1"</span>);</div><div class="line">    d3.select(<span class="string">"g"</span>).text(<span class="string">"Hello World 2"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
@@ -241,7 +240,7 @@
 <p>d3.select6 = function(selection) {<br>    return _select(“#d3-cell-6”).select(selection);<br>}<br>d3.selectAll6 = function(selection) {<br>    return _select(“#d3-cell-6”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-6"><br><br><g><br><br><script><br>    d3.select6(“g”).text(“Hello World 1”);<br>    d3.select6(“g”).text(“Hello World 2”);<br></script><br></g>
 
-
+<p><img src="2017-11-12-02-06-26.png" alt=""></p>
 <h3 id="Identificadores-de-elementos"><a href="#Identificadores-de-elementos" class="headerlink" title="Identificadores de elementos"></a>Identificadores de elementos</h3><p>Ahora, en un archivo HTML, sería necesario seleccionar los elementos específicos. En este caso podemos ocupar un atributo <strong><code>id</code></strong> con un nombre dado. En el siguiente caso <strong><code>&lt;g id=&quot;g1&quot;&gt;</code></strong>, que puede ser seleccionado con <strong><code>.select(&quot;#g1&quot;)</code></strong>.</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g id=<span class="string">"g1"</span>/&gt;</div><div class="line">&lt;g id=<span class="string">"g2"</span>/&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    d3.select(<span class="string">"#g1"</span>).text(<span class="string">"Hello World 1"</span>);</div><div class="line">    d3.select(<span class="string">"#g2"</span>).text(<span class="string">"Hello World 2"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
@@ -250,7 +249,7 @@
 <p>d3.select7 = function(selection) {<br>    return _select(“#d3-cell-7”).select(selection);<br>}<br>d3.selectAll7 = function(selection) {<br>    return _select(“#d3-cell-7”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-7"><br><br><g id="g1"><br><g id="g2"><br><br><script><br>    d3.select7(“#g1”).text(“Hello World 1”);<br>    d3.select7(“#g2”).text(“Hello World 2”);<br></script><br></g>
 
-
+<p><img src="2017-11-12-02-06-34.png" alt=""></p>
 <h3 id="Elementos-con-nombres"><a href="#Elementos-con-nombres" class="headerlink" title="Elementos con nombres"></a>Elementos con nombres</h3><p>Una alternativa a lo anterior, es agregar elementos con nombres propios.</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;control1 /&gt;</div><div class="line">&lt;control2 /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    d3.select(<span class="string">"control1"</span>).text(<span class="string">"Hello World 1"</span>);</div><div class="line">    d3.select(<span class="string">"control2"</span>).text(<span class="string">"Hello World 2"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
@@ -259,7 +258,7 @@
 <p>d3.select8 = function(selection) {<br>    return _select(“#d3-cell-8”).select(selection);<br>}<br>d3.selectAll8 = function(selection) {<br>    return _select(“#d3-cell-8”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-8"><br><br><control1><br><control2><br><br><script><br>    d3.select8(“control1”).text(“Hello World 1”);<br>    d3.select8(“control2”).text(“Hello World 2”);<br></script><br></control2></control1></g>
 
-
+<p><img src="2017-11-12-02-06-45.png" alt=""></p>
 <h3 id="Agregar-Elementos-al-DOM"><a href="#Agregar-Elementos-al-DOM" class="headerlink" title="Agregar Elementos al DOM"></a>Agregar Elementos al DOM</h3><p>Para poder trabajar correctamente con esto, es necesario agregar párrafos al elemento <strong><code>&lt;g /&gt;</code></strong>. Esto se realiza mediante <strong><code>.append(&quot;p&quot;)</code></strong>.</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    d3.select(<span class="string">"g"</span>).append(<span class="string">"p"</span>).text(<span class="string">"Hello World 1"</span>);</div><div class="line">    d3.select(<span class="string">"g"</span>).append(<span class="string">"p"</span>).text(<span class="string">"Hello World 2"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
@@ -268,7 +267,7 @@
 <p>d3.select9 = function(selection) {<br>    return _select(“#d3-cell-9”).select(selection);<br>}<br>d3.selectAll9 = function(selection) {<br>    return _select(“#d3-cell-9”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-9"><br><br><g><br><br><script><br>    d3.select9(“g”).append(“p”).text(“Hello World 1”);<br>    d3.select9(“g”).append(“p”).text(“Hello World 2”);<br></script><br></g>
 
-
+<p><img src="2017-11-12-02-06-54.png" alt=""></p>
 <h2 id="Chaining-methods"><a href="#Chaining-methods" class="headerlink" title="Chaining methods"></a>Chaining methods</h2><p>Si se desean agregar muchos párrafos, en vez de hacer las órdenes una a una, se pueden encadenar métodos para generar nuevos elementos. </p>
 <p>Al ocupar esta técnica, se puede simplificar el código.</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"New paragraph 1!"</span>)</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"New paragraph 2!"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
@@ -278,7 +277,7 @@
 <p>d3.select10 = function(selection) {<br>    return _select(“#d3-cell-10”).select(selection);<br>}<br>d3.selectAll10 = function(selection) {<br>    return _select(“#d3-cell-10”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-10"><br><br><g><br><br><script><br>    d3.select10(“g”)<br>        .append(“p”).text(“New paragraph 1!”)<br>        .append(“p”).text(“New paragraph 2!”);<br></script><br></g>
 
-
+<p><img src="2017-11-12-02-07-08.png" alt=""></p>
 <h2 id="HTML-Styles"><a href="#HTML-Styles" class="headerlink" title="HTML Styles"></a>HTML Styles</h2><p>Se pueden agregar estilos de HTML a los elementos que se agreguen.</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .text(<span class="string">"Hello World"</span>)</div><div class="line">        .style(<span class="string">"color"</span>,<span class="string">"#ff00ff"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
@@ -287,7 +286,7 @@
 <p>d3.select11 = function(selection) {<br>    return _select(“#d3-cell-11”).select(selection);<br>}<br>d3.selectAll11 = function(selection) {<br>    return _select(“#d3-cell-11”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-11"><br><br><g><br><br><script><br>    d3.select11(“g”)<br>        .text(“Hello World”)<br>        .style(“color”,”#ff00ff”);<br></script><br></g>
 
-
+<p><img src="2017-11-12-02-07-18.png" alt=""></p>
 <h2 id="Trabajar-con-Arrays"><a href="#Trabajar-con-Arrays" class="headerlink" title="Trabajar con Arrays"></a>Trabajar con Arrays</h2><p>En este caso, generamos un array.<br>Luego agregamos de forma manual un párrafo por cada elemento. Los elementos se llaman con corchetes, con índices basados en cero.</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    var array = [ <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">25</span>];</div><div class="line">    </div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"array[0]: "</span> + array[<span class="number">0</span>])</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"array[1]: "</span> + array[<span class="number">1</span>])</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"array[2]: "</span> + array[<span class="number">2</span>])</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"array[3]: "</span> + array[<span class="number">3</span>])</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"array[4]: "</span> + array[<span class="number">4</span>]);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
@@ -296,7 +295,7 @@
 <p>d3.select12 = function(selection) {<br>    return _select(“#d3-cell-12”).select(selection);<br>}<br>d3.selectAll12 = function(selection) {<br>    return _select(“#d3-cell-12”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-12"><br><br><g><br><br><script><br>    var array = [ 5, 10, 15, 20, 25];<br><br>    d3.select12(“g”)<br>        .append(“p”).text(“array[0]: “ + array[0])<br>        .append(“p”).text(“array[1]: “ + array[1])<br>        .append(“p”).text(“array[2]: “ + array[2])<br>        .append(“p”).text(“array[3]: “ + array[3])<br>        .append(“p”).text(“array[4]: “ + array[4]);<br></script><br></g>
 
-
+<p><img src="2017-11-12-02-07-25.png" alt=""></p>
 <h3 id="Arrays-en-d3"><a href="#Arrays-en-d3" class="headerlink" title="Arrays en d3"></a>Arrays en d3</h3><p>Trabajar con los arrays es <strong><em>raro</em></strong> en d3.</p>
 <p>Tiene un órden de ejecución no tán intuitivo. </p>
 <p>En primera instancia se hace un <strong>.selectAll(“p”)</strong>, incluso antes de haber agregado ningún <strong>(“p”)</strong> aún.</p>
@@ -309,7 +308,7 @@
 <p>d3.select13 = function(selection) {<br>    return _select(“#d3-cell-13”).select(selection);<br>}<br>d3.selectAll13 = function(selection) {<br>    return _select(“#d3-cell-13”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-13"><br><br><g><br><br><script><br>    var array = [ 5, 10, 15, 20, 25];<br><br>    d3.select13(“g”)<br>        .selectAll(“p”)<br>        .data(array)<br>        .enter()<br>        .append(“p”).text(“New paragraph!”);<br></script><br></g>
 
-
+<p><img src="2017-11-12-02-07-32.png" alt=""></p>
 <h3 id="Array-values"><a href="#Array-values" class="headerlink" title="Array values"></a>Array values</h3><p>En el caso anterior, no se puede acceder a los valores del array, es necesario agregar una función que retorne el valor del arreglo: <strong><code>function(d) {return d;}</code></strong>.</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    var array = [ <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">25</span>];</div><div class="line">    </div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .selectAll(<span class="string">"p"</span>)</div><div class="line">        .data(array).enter()</div><div class="line">        .append(<span class="string">"p"</span>).text(function(d) &#123; <span class="keyword">return</span> <span class="string">"Array Item: "</span> + d; &#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
@@ -318,7 +317,7 @@
 <p>d3.select14 = function(selection) {<br>    return _select(“#d3-cell-14”).select(selection);<br>}<br>d3.selectAll14 = function(selection) {<br>    return _select(“#d3-cell-14”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-14"><br><br><g><br><br><script><br>    var array = [ 5, 10, 15, 20, 25];<br><br>    d3.select14(“g”)<br>        .selectAll(“p”)<br>        .data(array).enter()<br>        .append(“p”).text(function(d) { return “Array Item: “ + d; });<br></script><br></g>
 
-
+<p><img src="2017-11-12-02-07-39.png" alt=""></p>
 <h3 id="Funciones"><a href="#Funciones" class="headerlink" title="Funciones"></a>Funciones</h3><p>En este caso se hace una función para hacer que cambie de color la función según el valor.</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    var dataset = [ <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">25</span>];</div><div class="line">    </div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .selectAll(<span class="string">"p"</span>)</div><div class="line">        .data(dataset).enter()</div><div class="line">        .append(<span class="string">"p"</span>).text(function(d) &#123; <span class="keyword">return</span> <span class="string">"Array Item: "</span> + d; &#125;)</div><div class="line">            .style(<span class="string">"color"</span>, function(d) </div><div class="line">                &#123;</div><div class="line">                    <span class="keyword">if</span> (d % <span class="number">2</span> == <span class="number">0</span>) </div><div class="line">                        &#123; <span class="keyword">return</span> <span class="string">"red"</span>;&#125; </div><div class="line">                    <span class="keyword">else</span> </div><div class="line">                        &#123; <span class="keyword">return</span> <span class="string">"blue"</span>; &#125; </div><div class="line">                &#125;);;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
@@ -327,7 +326,7 @@
 <p>d3.select15 = function(selection) {<br>    return _select(“#d3-cell-15”).select(selection);<br>}<br>d3.selectAll15 = function(selection) {<br>    return _select(“#d3-cell-15”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-15"><br><br><g><br><br><script><br>    var dataset = [ 5, 10, 15, 20, 25];<br><br>    d3.select15(“g”)<br>        .selectAll(“p”)<br>        .data(dataset).enter()<br>        .append(“p”).text(function(d) { return “Array Item: “ + d; })<br>            .style(“color”, function(d)<br>                {<br>                    if (d % 2 == 0)<br>                        { return “red”;}<br>                    else<br>                        { return “blue”; }<br>                });;<br></script><br></g>
 
-
+<p><img src="2017-11-12-02-07-46.png" alt=""></p>
 <h3 id="Refactor-de-funciones"><a href="#Refactor-de-funciones" class="headerlink" title="Refactor de funciones"></a>Refactor de funciones</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    function printNumber(d) &#123;  <span class="keyword">return</span> <span class="string">"Array Item: "</span> + d; &#125;</div><div class="line"></div><div class="line">    function colorThis(d)&#123; return (d % 2 == 0) ? "red" : "blue" ; &#125;</div><div class="line"></div><div class="line">    var dataset = [ <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">25</span>];</div><div class="line">    </div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .selectAll(<span class="string">"p"</span>)</div><div class="line">        .data(dataset).enter()</div><div class="line">        .append(<span class="string">"p"</span>).text(printNumber)</div><div class="line">        .style(<span class="string">"color"</span>, colorThis);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
 <p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
@@ -335,9 +334,9 @@
 <p>d3.select16 = function(selection) {<br>    return _select(“#d3-cell-16”).select(selection);<br>}<br>d3.selectAll16 = function(selection) {<br>    return _select(“#d3-cell-16”).selectAll(selection);<br>}<br></script></p>
 <g id="d3-cell-16"><br><br><g><br><br><script><br>    function printNumber(d) {  return “Array Item: “ + d; }<br><br>    function colorThis(d){ return (d % 2 == 0) ? “red” : “blue” ; }<br><br>    var dataset = [ 5, 10, 15, 20, 25];<br><br>    d3.select16(“g”)<br>        .selectAll(“p”)<br>        .data(dataset).enter()<br>        .append(“p”).text(printNumber)<br>        .style(“color”, colorThis);<br></script><br></g>
 
-
+<p><img src="2017-11-12-02-07-54.png" alt=""></p>
 <p>Otra función, para colorear las letras. Just for fun.</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    function printLetter(d, i) &#123; <span class="keyword">return</span> d; &#125;</div><div class="line">    </div><div class="line">    function randomColor(d, i)&#123; </div><div class="line">        <span class="keyword">return</span> <span class="string">'#'</span>+(Math.random()*<span class="number">0xFFFFFF</span>&lt;&lt;<span class="number">0</span>).toString(<span class="number">16</span>); </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var word = <span class="string">"Hello World"</span>;</div><div class="line">    </div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .selectAll(<span class="string">"a"</span>)</div><div class="line">        .data(word).enter()</div><div class="line">        .append(<span class="string">"a"</span>).text(printLetter)</div><div class="line">        .style(<span class="string">"color"</span>, colorThis );  </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    function printLetter(d, i) &#123; <span class="keyword">return</span> d; &#125;</div><div class="line">    </div><div class="line">    function randomColor(d, i)&#123; </div><div class="line">        <span class="keyword">return</span> <span class="string">'#'</span>+(Math.random()*<span class="number">0xFFFFFF</span>&lt;&lt;<span class="number">0</span>).toString(<span class="number">16</span>); </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var word = <span class="string">"Hello World"</span>;</div><div class="line">    </div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .selectAll(<span class="string">"a"</span>)</div><div class="line">        .data(word).enter()</div><div class="line">        .append(<span class="string">"a"</span>).text(printLetter)</div><div class="line">        .style(<span class="string">"color"</span>, randomColor );  </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
 <p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
 <p><script><br>_select = d3.select;</p>
@@ -351,9 +350,11 @@
         .selectAll("a")
         .data(word).enter()
         .append("a").text(printLetter)
-        .style("color", colorThis );  
+        .style("color", randomColor );  
 </script><br></g>
 
+<p><img src="2017-11-12-02-08-07.png" alt=""></p>
+<p>Claro que en este post, no se puede apreciar como cambian de color cada vez que se ejecutan :(</p>
 </g></g></g></g></g></g></g></g></g></g></g></g></g>
     </article>
     <!-- 前后页  -->
@@ -521,6 +522,10 @@
     
     
     
+    
+    
+    
+    
     <div class="total-archive"> Total : 8 </div>
     
     <div class="post-archive">
@@ -588,17 +593,17 @@
     
         <span class="sidebar-tag-name"><a href= "#">CC5508</a></span>
     
-        <span class="sidebar-tag-name"><a href= "#">Ubuntu</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">ZSH</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">VirtualEnv</a></span>
-    
         <span class="sidebar-tag-name"><a href= "#">Hexo</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">Ghost</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">Markdown</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Ubuntu</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">ZSH</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">VirtualEnv</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">HelloWorld</a></span>
     
