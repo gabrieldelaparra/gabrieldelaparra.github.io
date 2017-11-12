@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>
+        
+        learn d3.js - 01 · wororo
+        
+    </title>
+    <link rel="icon" href= /assests/favicon.ico>
+    <!-- TODO: 在font-face加载完毕后改变字体  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js"></script>
+    <!-- 提前加载place holder  -->
+    <style type="text/css">
+        @font-face {
+            font-family: 'Oswald-Regular';
+            src: url('/font/Oswald-Regular.ttf');
+        }
+    </style>
+    <style type="text/css">
+        .site-intro-placeholder {
+            position: absolute;
+            z-index: -2;
+            top: 0;
+            left: 0px;
+            width: calc(100% + 300px);
+            height: 100%;
+            background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+            background-position: center center;
+            transform: translate3d(-226px, 0, 0);
+            animation: gradient-move 2.5s ease-out 0s 1;
+        }
+        @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+    <link rel="stylesheet" href = /css/style.css?v=20171020 />
+    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+    
+    <script src="/scripts/main.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >wororo.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">learn d3.js - 01</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>wororo.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-img" style="background-image: url(/intro/back1.jpg)"></div>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            learn d3.js - 01
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+            <!-- 404 -->
+            
+        </p>
+        <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2017/11/12</span>
+            </div>
+        
+    </div>
+</div>
+        <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" />
+        <script>
+            var browser = {
+                    versions: function () {
+                        var u = window.navigator.userAgent;
+                        return {
+                            userAgent: u,
+                            trident: u.indexOf('Trident') > -1, //IE内核
+                            presto: u.indexOf('Presto') > -1, //opera内核
+                            webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+                            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+                            mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+                            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+                            android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+                            iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+                            iPad: u.indexOf('iPad') > -1, //是否为iPad
+                            webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+                            weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+                            uc: u.indexOf('UCBrowser') > -1 //是否为android下的UC浏览器
+                        };
+                    }()
+                }
+
+            function fontLoaded(){
+                console.log('font loaded');
+                if (document.getElementsByClassName('site-intro-meta')) {
+                    document.getElementsByClassName('intro-title')[0].classList.add('intro-fade-in');
+                    document.getElementsByClassName('intro-subtitle')[0].classList.add('intro-fade-in');
+                    var postIntroTags = document.getElementsByClassName('post-intro-tags')[0],
+                        postIntroMeat = document.getElementsByClassName('post-intro-meta')[0];
+                        if (postIntroTags) {
+                            postIntroTags.classList.add('post-fade-in');
+                        }
+                        if (postIntroMeat) {
+                            postIntroMeat.classList.add('post-fade-in');
+                        }
+                    }
+                }
+                
+            console.log("userAgent:" + browser.versions.userAgent);
+            // UC不支持跨域，所以直接显示
+            if (browser.versions.uc) {
+                console.log("UCBrowser");
+                fontLoaded();
+            } else {
+                WebFont.load({
+                    custom: {
+                        families: ['Oswald-Regular']
+                    },
+                    loading: function () {  //所有字体开始加载
+                        // console.log('loading');
+                    },
+                    active: function () {  //所有字体已渲染
+                        fontLoaded();
+                    },
+                    inactive: function () { //字体预加载失败，无效字体或浏览器不支持加载
+                        console.log('inactive: timeout');
+                        fontLoaded();
+                    },
+                    timeout: 7000 // Set the timeout to two seconds
+                });
+            }
+        </script>
+        <div class="container container-unloaded">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h1><p>Para empezar a trabajar con D3 en jupyter, se trabajará con <a href="https://github.com/ResidentMario/py_d3" target="_blank" rel="external">py_d3</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> py_d3</div></pre></td></tr></table></figure>
+<h1 id="Initialize"><a href="#Initialize" class="headerlink" title="Initialize"></a>Initialize</h1><p>Para empezar a ocupar la librería es necesario hacer un load con <strong><code>%load_ext py_d3</code></strong>. En algunos casos hay problemas al reabrir el notebook, por eso se cambia por <strong><code>%reload_ext py_d3</code></strong>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">%reload_ext py_d3</div></pre></td></tr></table></figure>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p>En este Notebook, trabajaré en base al <a href="http://gcoch.github.io/D3-tutorial" target="_blank" rel="external">tutorial de Gabriel Coch</a>. Ese tutorial es una traducción de otro <a href="http://alignedleft.com/tutorials/d3" target="_blank" rel="external">tutorial de Scott Murray</a>. </p>
+<p>El aporte de este tutorial es trabajarlo en Jupyter.</p>
+<h1 id="Jupyter-con-py-d3"><a href="#Jupyter-con-py-d3" class="headerlink" title="Jupyter con py_d3"></a>Jupyter con py_d3</h1><p>Usando el tag <strong><code>%%d3</code></strong> se puede correr código HTML y JavaScript directamente en una celda. Aquí algunos ejemplos.</p>
+<h2 id="Text"><a href="#Text" class="headerlink" title="Text"></a>Text</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">Hello World!</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select0 = function(selection) {<br>    return _select(“#d3-cell-0”).select(selection);<br>}<br>d3.selectAll0 = function(selection) {<br>    return _select(“#d3-cell-0”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-0"><br><br>Hello World!<br></g>
+
+
+<h2 id="Links"><a href="#Links" class="headerlink" title="Links"></a>Links</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;a href="http://www.google.com"&gt;Google&lt;/a&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select1 = function(selection) {<br>    return _select(“#d3-cell-1”).select(selection);<br>}<br>d3.selectAll1 = function(selection) {<br>    return _select(“#d3-cell-1”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-1"><br><br><a href="http://www.google.com" target="_blank" rel="external">Google</a><br></g>
+
+
+<h2 id="SVG"><a href="#SVG" class="headerlink" title="SVG"></a>SVG</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;svg&gt;</div><div class="line">    &lt;circle cx=<span class="string">"50"</span> </div><div class="line">            cy=<span class="string">"50"</span> </div><div class="line">            r=<span class="string">"30"</span> </div><div class="line">            fill=<span class="string">"blue"</span> </div><div class="line">            stroke=<span class="string">"black"</span> </div><div class="line">            stroke-width=<span class="string">"5"</span>/&gt;</div><div class="line">&lt;/svg&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select2 = function(selection) {<br>    return _select(“#d3-cell-2”).select(selection);<br>}<br>d3.selectAll2 = function(selection) {<br>    return _select(“#d3-cell-2”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-2"><br><br><svg><br/>    <circle cx="50" cy="50" r="30" fill="blue" stroke="black" stroke-width="5"/><br/></svg><br></g>
+
+
+<h2 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h2><p>Cell comentada, para que no moleste.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    alert(<span class="string">"Hello, world!"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select3 = function(selection) {<br>    return _select(“#d3-cell-3”).select(selection);<br>}<br>d3.selectAll3 = function(selection) {<br>    return _select(“#d3-cell-3”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-3"><br><br><script><br>    alert(“Hello, world!”);<br></script><br></g>
+
+
+<h2 id="HTML-Console"><a href="#HTML-Console" class="headerlink" title="HTML Console"></a>HTML Console</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    console.log(d3.selectAll(<span class="string">"p"</span>));</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select4 = function(selection) {<br>    return _select(“#d3-cell-4”).select(selection);<br>}<br>d3.selectAll4 = function(selection) {<br>    return _select(“#d3-cell-4”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-4"><br><br><script><br>    console.log(d3.selectAll4(“p”));<br></script><br></g>
+
+
+<h1 id="d3-js"><a href="#d3-js" class="headerlink" title="d3.js"></a>d3.js</h1><p>d3 es una librería que permite agregar y modificar elementos en la estructura del DOM de HTML.</p>
+<p>Una diferencia de trabajar directamente en un archivo HTML, es necesario cambiar <code>d3.select(&quot;body&quot;).append(&quot;g&quot;)</code> sino generar un elemento <code>&lt;g /&gt;</code> y ocupar <code>d3.select(&quot;g&quot;)</code>.</p>
+<h2 id="Anadir-Elementos"><a href="#Anadir-Elementos" class="headerlink" title="Añadir Elementos"></a>Añadir Elementos</h2><p>Lo primero será crear elementos dentro de la celda de salida. </p>
+<p>En este caso, un texto.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .text(<span class="string">"Hello World"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select5 = function(selection) {<br>    return _select(“#d3-cell-5”).select(selection);<br>}<br>d3.selectAll5 = function(selection) {<br>    return _select(“#d3-cell-5”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-5"><br><br><g><br><br><script><br>    d3.select5(“g”)<br>        .text(“Hello World”);<br></script><br></g>
+
+
+<h3 id="HTML-DOM-Elements"><a href="#HTML-DOM-Elements" class="headerlink" title="HTML DOM Elements"></a>HTML DOM Elements</h3><p>Si quisiera agregar más de un párrafo, se pensaría intuitivamente que se debe repetir el código, sin embargo, dentro del DOM HTML, se trata de un solo elemento, llamado <strong><code>&lt;g /&gt;</code></strong>. Lo que sucede en la siguiente celda es que se agrega dos valores de texto al mismo elemento.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    d3.select(<span class="string">"g"</span>).text(<span class="string">"Hello World 1"</span>);</div><div class="line">    d3.select(<span class="string">"g"</span>).text(<span class="string">"Hello World 2"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select6 = function(selection) {<br>    return _select(“#d3-cell-6”).select(selection);<br>}<br>d3.selectAll6 = function(selection) {<br>    return _select(“#d3-cell-6”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-6"><br><br><g><br><br><script><br>    d3.select6(“g”).text(“Hello World 1”);<br>    d3.select6(“g”).text(“Hello World 2”);<br></script><br></g>
+
+
+<h3 id="Identificadores-de-elementos"><a href="#Identificadores-de-elementos" class="headerlink" title="Identificadores de elementos"></a>Identificadores de elementos</h3><p>Ahora, en un archivo HTML, sería necesario seleccionar los elementos específicos. En este caso podemos ocupar un atributo <strong><code>id</code></strong> con un nombre dado. En el siguiente caso <strong><code>&lt;g id=&quot;g1&quot;&gt;</code></strong>, que puede ser seleccionado con <strong><code>.select(&quot;#g1&quot;)</code></strong>.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g id=<span class="string">"g1"</span>/&gt;</div><div class="line">&lt;g id=<span class="string">"g2"</span>/&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    d3.select(<span class="string">"#g1"</span>).text(<span class="string">"Hello World 1"</span>);</div><div class="line">    d3.select(<span class="string">"#g2"</span>).text(<span class="string">"Hello World 2"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select7 = function(selection) {<br>    return _select(“#d3-cell-7”).select(selection);<br>}<br>d3.selectAll7 = function(selection) {<br>    return _select(“#d3-cell-7”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-7"><br><br><g id="g1"><br><g id="g2"><br><br><script><br>    d3.select7(“#g1”).text(“Hello World 1”);<br>    d3.select7(“#g2”).text(“Hello World 2”);<br></script><br></g>
+
+
+<h3 id="Elementos-con-nombres"><a href="#Elementos-con-nombres" class="headerlink" title="Elementos con nombres"></a>Elementos con nombres</h3><p>Una alternativa a lo anterior, es agregar elementos con nombres propios.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;control1 /&gt;</div><div class="line">&lt;control2 /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    d3.select(<span class="string">"control1"</span>).text(<span class="string">"Hello World 1"</span>);</div><div class="line">    d3.select(<span class="string">"control2"</span>).text(<span class="string">"Hello World 2"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select8 = function(selection) {<br>    return _select(“#d3-cell-8”).select(selection);<br>}<br>d3.selectAll8 = function(selection) {<br>    return _select(“#d3-cell-8”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-8"><br><br><control1><br><control2><br><br><script><br>    d3.select8(“control1”).text(“Hello World 1”);<br>    d3.select8(“control2”).text(“Hello World 2”);<br></script><br></control2></control1></g>
+
+
+<h3 id="Agregar-Elementos-al-DOM"><a href="#Agregar-Elementos-al-DOM" class="headerlink" title="Agregar Elementos al DOM"></a>Agregar Elementos al DOM</h3><p>Para poder trabajar correctamente con esto, es necesario agregar párrafos al elemento <strong><code>&lt;g /&gt;</code></strong>. Esto se realiza mediante <strong><code>.append(&quot;p&quot;)</code></strong>.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    d3.select(<span class="string">"g"</span>).append(<span class="string">"p"</span>).text(<span class="string">"Hello World 1"</span>);</div><div class="line">    d3.select(<span class="string">"g"</span>).append(<span class="string">"p"</span>).text(<span class="string">"Hello World 2"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select9 = function(selection) {<br>    return _select(“#d3-cell-9”).select(selection);<br>}<br>d3.selectAll9 = function(selection) {<br>    return _select(“#d3-cell-9”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-9"><br><br><g><br><br><script><br>    d3.select9(“g”).append(“p”).text(“Hello World 1”);<br>    d3.select9(“g”).append(“p”).text(“Hello World 2”);<br></script><br></g>
+
+
+<h2 id="Chaining-methods"><a href="#Chaining-methods" class="headerlink" title="Chaining methods"></a>Chaining methods</h2><p>Si se desean agregar muchos párrafos, en vez de hacer las órdenes una a una, se pueden encadenar métodos para generar nuevos elementos. </p>
+<p>Al ocupar esta técnica, se puede simplificar el código.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"New paragraph 1!"</span>)</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"New paragraph 2!"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select10 = function(selection) {<br>    return _select(“#d3-cell-10”).select(selection);<br>}<br>d3.selectAll10 = function(selection) {<br>    return _select(“#d3-cell-10”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-10"><br><br><g><br><br><script><br>    d3.select10(“g”)<br>        .append(“p”).text(“New paragraph 1!”)<br>        .append(“p”).text(“New paragraph 2!”);<br></script><br></g>
+
+
+<h2 id="HTML-Styles"><a href="#HTML-Styles" class="headerlink" title="HTML Styles"></a>HTML Styles</h2><p>Se pueden agregar estilos de HTML a los elementos que se agreguen.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .text(<span class="string">"Hello World"</span>)</div><div class="line">        .style(<span class="string">"color"</span>,<span class="string">"#ff00ff"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select11 = function(selection) {<br>    return _select(“#d3-cell-11”).select(selection);<br>}<br>d3.selectAll11 = function(selection) {<br>    return _select(“#d3-cell-11”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-11"><br><br><g><br><br><script><br>    d3.select11(“g”)<br>        .text(“Hello World”)<br>        .style(“color”,”#ff00ff”);<br></script><br></g>
+
+
+<h2 id="Trabajar-con-Arrays"><a href="#Trabajar-con-Arrays" class="headerlink" title="Trabajar con Arrays"></a>Trabajar con Arrays</h2><p>En este caso, generamos un array.<br>Luego agregamos de forma manual un párrafo por cada elemento. Los elementos se llaman con corchetes, con índices basados en cero.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    var array = [ <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">25</span>];</div><div class="line">    </div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"array[0]: "</span> + array[<span class="number">0</span>])</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"array[1]: "</span> + array[<span class="number">1</span>])</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"array[2]: "</span> + array[<span class="number">2</span>])</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"array[3]: "</span> + array[<span class="number">3</span>])</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"array[4]: "</span> + array[<span class="number">4</span>]);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select12 = function(selection) {<br>    return _select(“#d3-cell-12”).select(selection);<br>}<br>d3.selectAll12 = function(selection) {<br>    return _select(“#d3-cell-12”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-12"><br><br><g><br><br><script><br>    var array = [ 5, 10, 15, 20, 25];<br><br>    d3.select12(“g”)<br>        .append(“p”).text(“array[0]: “ + array[0])<br>        .append(“p”).text(“array[1]: “ + array[1])<br>        .append(“p”).text(“array[2]: “ + array[2])<br>        .append(“p”).text(“array[3]: “ + array[3])<br>        .append(“p”).text(“array[4]: “ + array[4]);<br></script><br></g>
+
+
+<h3 id="Arrays-en-d3"><a href="#Arrays-en-d3" class="headerlink" title="Arrays en d3"></a>Arrays en d3</h3><p>Trabajar con los arrays es <strong><em>raro</em></strong> en d3.</p>
+<p>Tiene un órden de ejecución no tán intuitivo. </p>
+<p>En primera instancia se hace un <strong>.selectAll(“p”)</strong>, incluso antes de haber agregado ningún <strong>(“p”)</strong> aún.</p>
+<p>Luego se hace una selección del array con <strong>.data(nombreDelArray)</strong> y luego un <strong>.enter()</strong>.</p>
+<p>Ahora, por cada elemento, agregamos un párrafo con <strong>New paragraph!</strong>. </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    var array = [ <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">25</span>];</div><div class="line">    </div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .selectAll(<span class="string">"p"</span>)</div><div class="line">        .data(array)</div><div class="line">        .enter()</div><div class="line">        .append(<span class="string">"p"</span>).text(<span class="string">"New paragraph!"</span>);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select13 = function(selection) {<br>    return _select(“#d3-cell-13”).select(selection);<br>}<br>d3.selectAll13 = function(selection) {<br>    return _select(“#d3-cell-13”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-13"><br><br><g><br><br><script><br>    var array = [ 5, 10, 15, 20, 25];<br><br>    d3.select13(“g”)<br>        .selectAll(“p”)<br>        .data(array)<br>        .enter()<br>        .append(“p”).text(“New paragraph!”);<br></script><br></g>
+
+
+<h3 id="Array-values"><a href="#Array-values" class="headerlink" title="Array values"></a>Array values</h3><p>En el caso anterior, no se puede acceder a los valores del array, es necesario agregar una función que retorne el valor del arreglo: <strong><code>function(d) {return d;}</code></strong>.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    var array = [ <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">25</span>];</div><div class="line">    </div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .selectAll(<span class="string">"p"</span>)</div><div class="line">        .data(array).enter()</div><div class="line">        .append(<span class="string">"p"</span>).text(function(d) &#123; <span class="keyword">return</span> <span class="string">"Array Item: "</span> + d; &#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select14 = function(selection) {<br>    return _select(“#d3-cell-14”).select(selection);<br>}<br>d3.selectAll14 = function(selection) {<br>    return _select(“#d3-cell-14”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-14"><br><br><g><br><br><script><br>    var array = [ 5, 10, 15, 20, 25];<br><br>    d3.select14(“g”)<br>        .selectAll(“p”)<br>        .data(array).enter()<br>        .append(“p”).text(function(d) { return “Array Item: “ + d; });<br></script><br></g>
+
+
+<h3 id="Funciones"><a href="#Funciones" class="headerlink" title="Funciones"></a>Funciones</h3><p>En este caso se hace una función para hacer que cambie de color la función según el valor.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    var dataset = [ <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">25</span>];</div><div class="line">    </div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .selectAll(<span class="string">"p"</span>)</div><div class="line">        .data(dataset).enter()</div><div class="line">        .append(<span class="string">"p"</span>).text(function(d) &#123; <span class="keyword">return</span> <span class="string">"Array Item: "</span> + d; &#125;)</div><div class="line">            .style(<span class="string">"color"</span>, function(d) </div><div class="line">                &#123;</div><div class="line">                    <span class="keyword">if</span> (d % <span class="number">2</span> == <span class="number">0</span>) </div><div class="line">                        &#123; <span class="keyword">return</span> <span class="string">"red"</span>;&#125; </div><div class="line">                    <span class="keyword">else</span> </div><div class="line">                        &#123; <span class="keyword">return</span> <span class="string">"blue"</span>; &#125; </div><div class="line">                &#125;);;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select15 = function(selection) {<br>    return _select(“#d3-cell-15”).select(selection);<br>}<br>d3.selectAll15 = function(selection) {<br>    return _select(“#d3-cell-15”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-15"><br><br><g><br><br><script><br>    var dataset = [ 5, 10, 15, 20, 25];<br><br>    d3.select15(“g”)<br>        .selectAll(“p”)<br>        .data(dataset).enter()<br>        .append(“p”).text(function(d) { return “Array Item: “ + d; })<br>            .style(“color”, function(d)<br>                {<br>                    if (d % 2 == 0)<br>                        { return “red”;}<br>                    else<br>                        { return “blue”; }<br>                });;<br></script><br></g>
+
+
+<h3 id="Refactor-de-funciones"><a href="#Refactor-de-funciones" class="headerlink" title="Refactor de funciones"></a>Refactor de funciones</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    function printNumber(d) &#123;  <span class="keyword">return</span> <span class="string">"Array Item: "</span> + d; &#125;</div><div class="line"></div><div class="line">    function colorThis(d)&#123; return (d % 2 == 0) ? "red" : "blue" ; &#125;</div><div class="line"></div><div class="line">    var dataset = [ <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>, <span class="number">20</span>, <span class="number">25</span>];</div><div class="line">    </div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .selectAll(<span class="string">"p"</span>)</div><div class="line">        .data(dataset).enter()</div><div class="line">        .append(<span class="string">"p"</span>).text(printNumber)</div><div class="line">        .style(<span class="string">"color"</span>, colorThis);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select16 = function(selection) {<br>    return _select(“#d3-cell-16”).select(selection);<br>}<br>d3.selectAll16 = function(selection) {<br>    return _select(“#d3-cell-16”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-16"><br><br><g><br><br><script><br>    function printNumber(d) {  return “Array Item: “ + d; }<br><br>    function colorThis(d){ return (d % 2 == 0) ? “red” : “blue” ; }<br><br>    var dataset = [ 5, 10, 15, 20, 25];<br><br>    d3.select16(“g”)<br>        .selectAll(“p”)<br>        .data(dataset).enter()<br>        .append(“p”).text(printNumber)<br>        .style(“color”, colorThis);<br></script><br></g>
+
+
+<p>Otra función, para colorear las letras. Just for fun.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">%%d3 <span class="number">4.11</span><span class="number">.0</span></div><div class="line"></div><div class="line">&lt;g /&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    function printLetter(d, i) &#123; <span class="keyword">return</span> d; &#125;</div><div class="line">    </div><div class="line">    function randomColor(d, i)&#123; </div><div class="line">        <span class="keyword">return</span> <span class="string">'#'</span>+(Math.random()*<span class="number">0xFFFFFF</span>&lt;&lt;<span class="number">0</span>).toString(<span class="number">16</span>); </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var word = <span class="string">"Hello World"</span>;</div><div class="line">    </div><div class="line">    d3.select(<span class="string">"g"</span>)</div><div class="line">        .selectAll(<span class="string">"a"</span>)</div><div class="line">        .data(word).enter()</div><div class="line">        .append(<span class="string">"a"</span>).text(printLetter)</div><div class="line">        .style(<span class="string">"color"</span>, colorThis );  </div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<p><script><br>requirejs.config({<br>    paths: {<br>        d3: “//cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3”<br>    }<br>});</p>
+<p>require([‘d3’], function(d3) {<br>    window.d3 = d3;<br>});<br></script></p>
+<p><script><br>_select = d3.select;</p>
+<p>d3.select17 = function(selection) {<br>    return _select(“#d3-cell-17”).select(selection);<br>}<br>d3.selectAll17 = function(selection) {<br>    return _select(“#d3-cell-17”).selectAll(selection);<br>}<br></script></p>
+<g id="d3-cell-17"><br><br><g><br><br><script><br>    function printLetter(d, i) { return d; }<br><br>    function randomColor(d, i){<br>        return ‘#’+(Math.random()*0xFFFFFF&lt;<0).toString(16); 
+    }
+
+    var word = "Hello World";
+
+    d3.select17("g")
+        .selectAll("a")
+        .data(word).enter()
+        .append("a").text(printLetter)
+        .style("color", colorThis );  
+</script><br></g>
+
+</g></g></g></g></g></g></g></g></g></g></g></g></g>
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+        
+            <li class="previous">
+                <a href= "/2017/10/07/herokuTutorial/" title= herokuTutorial >
+                    <span>Previous Post</span>
+                    <span>herokuTutorial</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 评论插件 -->
+    <!-- 来必力City版安装代码 -->
+
+<!-- City版安装代码已完成 -->
+    
+    
+    <!--PC版-->
+
+    <!--PC版-->
+
+
+    
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer footer-unloaded">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="mailto:ignacio.delaparra@gmail.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/gabrieldelaparra" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <a href="//twitter.com/gabeldelaostia" class="iconfont-archer twitter" target="_blank" title="twitter"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info">Theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+</footer>
+    </div>
+    <!-- toc -->
+    
+    <div class="toc-wrapper">
+        <div class="toc-catalog">
+            <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+        </div>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Packages"><span class="toc-number">1.</span> <span class="toc-text">Packages</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Initialize"><span class="toc-number">2.</span> <span class="toc-text">Initialize</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#References"><span class="toc-number">3.</span> <span class="toc-text">References</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Jupyter-con-py-d3"><span class="toc-number">4.</span> <span class="toc-text">Jupyter con py_d3</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Text"><span class="toc-number">4.1.</span> <span class="toc-text">Text</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Links"><span class="toc-number">4.2.</span> <span class="toc-text">Links</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SVG"><span class="toc-number">4.3.</span> <span class="toc-text">SVG</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Javascript"><span class="toc-number">4.4.</span> <span class="toc-text">Javascript</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-Console"><span class="toc-number">4.5.</span> <span class="toc-text">HTML Console</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#d3-js"><span class="toc-number">5.</span> <span class="toc-text">d3.js</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Anadir-Elementos"><span class="toc-number">5.1.</span> <span class="toc-text">Añadir Elementos</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML-DOM-Elements"><span class="toc-number">5.1.1.</span> <span class="toc-text">HTML DOM Elements</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Identificadores-de-elementos"><span class="toc-number">5.1.2.</span> <span class="toc-text">Identificadores de elementos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Elementos-con-nombres"><span class="toc-number">5.1.3.</span> <span class="toc-text">Elementos con nombres</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Agregar-Elementos-al-DOM"><span class="toc-number">5.1.4.</span> <span class="toc-text">Agregar Elementos al DOM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Chaining-methods"><span class="toc-number">5.2.</span> <span class="toc-text">Chaining methods</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-Styles"><span class="toc-number">5.3.</span> <span class="toc-text">HTML Styles</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Trabajar-con-Arrays"><span class="toc-number">5.4.</span> <span class="toc-text">Trabajar con Arrays</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Arrays-en-d3"><span class="toc-number">5.4.1.</span> <span class="toc-text">Arrays en d3</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-values"><span class="toc-number">5.4.2.</span> <span class="toc-text">Array values</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Funciones"><span class="toc-number">5.4.3.</span> <span class="toc-text">Funciones</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Refactor-de-funciones"><span class="toc-number">5.4.4.</span> <span class="toc-text">Refactor de funciones</span></a></li></ol></li></ol></li></ol>
+    </div>
+    
+    <div class="back-top">&#xe639;</div>
+    <div class="sidebar">
+    <div class="sidebar-header sidebar-header-show-archive">
+        <div class="sidebar-category">
+            <span class="sidebar-archive-link"><span class="iconfont-archer">&#xe67d;</span>Archive</span>
+            <span class="sidebar-tags-link"><span class="iconfont-archer">&#xe610;</span>Tag</span>
+        </div>
+    </div>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-archive">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 8 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/12</span><a class="archive-post-title" href= "/2017/11/12/learnd3js01/" >learn d3.js - 01</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/07</span><a class="archive-post-title" href= "/2017/10/07/herokuTutorial/" >herokuTutorial</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/30</span><a class="archive-post-title" href= "/2017/09/30/esteganografia/" >esteganografia</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/23</span><a class="archive-post-title" href= "/2017/09/23/djangoHeroku/" >djangoHeroku</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/16</span><a class="archive-post-title" href= "/2017/09/16/freshStart/" >freshStart</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/09</span><a class="archive-post-title" href= "/2017/09/09/hexoBlog/" >hexoBlog</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/02</span><a class="archive-post-title" href= "/2017/09/02/firstBorn/" >firstBorn</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/02</span><a class="archive-post-title" href= "/2017/09/02/hello-world/" >Hello World</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name"><a href= "#">Python</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Github</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Django</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Heroku</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Images</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">CC5508</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Ubuntu</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">ZSH</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">VirtualEnv</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Hexo</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Ghost</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">Markdown</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">HelloWorld</a></span>
+    
+    </div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #888; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tag-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var jsInfo = {
+        root: '/'
+    }
+</script>
+    <!-- 不蒜子  -->
+    
+    <!-- CNZZ统计  -->
+    
+    </div>
+    </body>
+</html>
+
+
